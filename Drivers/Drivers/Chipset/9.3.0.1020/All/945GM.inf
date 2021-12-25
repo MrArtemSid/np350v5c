@@ -1,0 +1,110 @@
+; ****************************************************************************
+; ****************************************************************************
+; **    Filename:  945GM.INF (82XXX Chipset)                                                 
+; **    Abstract:  Windows* 2K, XP, 2003 INF File for 
+; **		   82XXX Memory Controller Hub 
+; **    Last Update: May 29, 2007 (Version 8.3.1 Build 1006)
+; ****************************************************************************
+; ****************************************************************************
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%INTEL%
+CatalogFile=945GM.cat
+DriverVer=05/18/2007, 8.3.1.1005
+
+[SourceDisksNames] 
+[SourceDisksFiles] 
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[Manufacturer]
+%INTEL%=INTEL_SYS,NTamd64
+
+[INTEL_SYS]
+;Calistoga
+%PCI\VEN_8086&DEV_27A0.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_27A0
+%PCI\VEN_8086&DEV_27A1.DeviceDesc%=INTEL_PCI,PCI\VEN_8086&DEV_27A1
+
+%PCI\VEN_8086&DEV_27AC.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_27AC
+%PCI\VEN_8086&DEV_27AD.DeviceDesc%=INTEL_PCI,PCI\VEN_8086&DEV_27AD
+
+[INTEL_SYS.NTamd64]
+;Calistoga
+%PCI\VEN_8086&DEV_27A0.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_27A0
+%PCI\VEN_8086&DEV_27A1.DeviceDesc%=INTEL_PCI,PCI\VEN_8086&DEV_27A1
+
+%PCI\VEN_8086&DEV_27AC.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_27AC
+%PCI\VEN_8086&DEV_27AD.DeviceDesc%=INTEL_PCI,PCI\VEN_8086&DEV_27AD
+
+[INTEL_PCI]
+AddReg=INF_VER
+Include=machine.inf
+Needs=PCI_DRV
+
+[INTEL_PCI.Services]
+Include=machine.inf
+Needs=PCI_DRV.Services
+
+[INTEL_PCI.HW]
+Include=machine.inf
+Needs=PCI_DRV.HW
+
+;**************************************************************************
+; Do-nothing section used to avoid "Unknown hardware" installation prompts.
+
+[NO_DRV]
+AddReg=INF_VER
+Include=machine.inf
+Needs=NO_DRV
+
+[NO_DRV.Services]
+Include=machine.inf
+Needs=NO_DRV.Services
+
+[INF_VER]
+HKLM,Software\Intel\InfInst,Infver,,"7.1.1"
+
+[Strings]
+INTEL="Intel"
+PCI\VEN_8086&DEV_27A0.DeviceDesc="Mobile Intel(R) 945GM/GU/PM/GMS/940GML/943GML and Intel(R) 945GT Express Processor to DRAM Controller - 27A0"
+PCI\VEN_8086&DEV_27A1.DeviceDesc="Mobile Intel(R) 945GM/GU/PM/GMS/940GML/943GML and Intel(R) 945GT Express PCI Express Root Port - 27A1"
+
+PCI\VEN_8086&DEV_27AC.DeviceDesc="Mobile Intel(R) 945GME Express Processor to DRAM Controller - 27AC"
+PCI\VEN_8086&DEV_27AD.DeviceDesc="Mobile Intel(R) 945GME Express PCI Express Root Port - 27AD"
+
+
+; Copyright (c) 2003-2007 Intel Corporation
+
+; ************************************************************
+; Intel is making no claims of usability, efficacy or 
+; warranty.  
+; ************************************************************
+; Information in this document is provided in connection with 
+; Intel products.  No license, express or implied, by estoppel 
+; or otherwise, to any intellectual property rights is granted 
+; by this document.  Intel assumes no liability whatsoever, 
+; and Intel disclaims any express or implied warranty, 
+; relating to sale and/or use of Intel products including 
+; liability or warranties relating to fitness for a particular 
+; purpose, merchantability, or infringement of any patent, 
+; copyright or other intellectual property right.  Intel 
+; products are not intended for use in medical, life saving, 
+; or life sustaining applications.
+
+; ************************************************************
+; Intel Corporation disclaims all warranties and liabilities 
+; for the use of this document and the information contained 
+; herein, and assumes no responsibility for any errors which 
+; may appear in this document, nor does Intel make a 
+; commitment to update the information contained herein. Intel 
+; reserves the right to make changes to this document at any 
+; time, without notice.
+; ************************************************************
+; ************************************************************
+
+; * Third-party brands and names are the property of their 
+; respective owners.

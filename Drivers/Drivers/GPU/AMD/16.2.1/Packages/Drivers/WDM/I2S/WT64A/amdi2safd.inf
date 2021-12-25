@@ -1,0 +1,335 @@
+;------------------------------------------------------------------------------
+; AMD I2S Audio Information file : amdi2safd.inf
+;
+; Copyright (c) 2011 Advanced Micro Devices, Inc. All rights reserved 
+;------------------------------------------------------------------------------
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=MEDIA
+ClassGuid={4d36e96c-e325-11ce-bfc1-08002be10318}
+Provider=%AMD%
+CatalogFile=amdi2safd.cat
+DriverVer=10/30/2015,1.0.0.11
+
+[DestinationDirs]
+DefaultDestDir = 12
+I2SAudioInstall.CopyList = 10,system32\drivers
+
+[SourceDisksNames]
+1 = %DiskName%
+
+[SourceDisksFiles]
+amdi2safd.sys=1
+amdacpksl.sys=1
+
+[Manufacturer]
+%ManufacturerName%=AMD,NTx86,NTAMD64
+
+[SignatureAttributes]
+amdi2safd.sys=SignatureAttributes.DRM
+
+[SignatureAttributes.DRM]
+DRMLevel=1300
+
+[AMD.NTx86]
+%I2SAudioDeviceDescription% = I2SAudioInstall, ACPI\I2SC1002
+
+[AMD.NTamd64]
+%I2SAudioDeviceDescription% = I2SAudioInstall, ACPI\I2SC1002
+
+[I2SAudioInstall]
+NEEDS=KS.Registration
+NEEDS=WDMAUDIO.Registration
+INCLUDE=ks.inf
+INCLUDE=wdmaudio.inf
+CopyFiles   = I2SAudioInstall.CopyList
+AddReg      = I2SAudioInstall.AddReg
+AddProperty = I2SAudioBranding.AddProperty
+
+[I2SAudioBranding.AddProperty]
+;DeviceBrandingIcon,,,,"%1%\amdi2safd.sys,-203"
+DeviceVendorWebSite,,,,"http://amd.com"
+
+[I2SAudioInstall.HW]
+AddReg = HdAudSecurity.AddReg
+
+[I2SAudioInstall.Services]
+AddService=AMDI2SAudioService, 0x00000002, I2SAudio_Service_Install
+
+[I2SAudio_Service_Install]
+DisplayName   = %AMDI2SAudioDriver.SvcDesc%
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %10%\system32\drivers\amdi2safd.sys
+
+[I2SAudioInstall.CopyList]
+amdi2safd.sys
+amdacpksl.sys
+
+[I2SAudioInstall.AddReg]
+HKR,,AssociatedFilters,,"wdmaud,swmidi,redbook"
+HKR,,Driver,,amdi2safd.sys
+HKR,Drivers,SubClasses,,"wave,midi,mixer"
+
+HKR,Drivers\wave\wdmaud.drv,Driver,,wdmaud.drv
+HKR,Drivers\midi\wdmaud.drv,Driver,,wdmaud.drv
+HKR,Drivers\mixer\wdmaud.drv,Driver,,wdmaud.drv
+
+HKR,Drivers\wave\wdmaud.drv, Description,,%I2SAudioDeviceDescription%
+HKR,Drivers\midi\wdmaud.drv, Description,,%I2SAudioDeviceDescription%
+HKR,Drivers\mixer\wdmaud.drv,Description,,%I2SAudioDeviceDescription%
+
+HKR,PowerSettings,ConservationIdleTime,1,01E,00,00,00
+HKR,PowerSettings,PerformanceIdleTime,1,01E,00,00,00
+HKR,PowerSettings,IdlePowerState,1,03,00,00,00
+
+HKLM,%MEDIA_CATEGORIES%\%MicInCustomNameGUID%,Name,,%MicInCustomName%
+
+HKR,GlobalSettings,I2SHardwareAudioOffload,1,01,00,00,00 ; Controls the Hardware offload support enable/disable
+HKR,GlobalSettings,I2SCodecIndex,1,00,00,00,00 ; 0 is for Realtek codec, 1 is for BT codec
+
+
+[I2SAudioInstall.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,    %KSNAME_WaveSpeaker_Offload0%,     I2SAudioInstall.I.WaveSpeakerOffload0
+AddInterface=%KSCATEGORY_AUDIO%,    %KSNAME_TopologySpeaker_Offload0%, I2SAudioInstall.I.TopologySpeakerOffload0
+AddInterface=%KSCATEGORY_RENDER%,   %KSNAME_WaveSpeaker_Offload0%,     I2SAudioInstall.I.WaveSpeakerOffload0
+AddInterface=%KSCATEGORY_REALTIME%, %KSNAME_WaveSpeaker_Offload0%,     I2SAudioInstall.I.WaveSpeakerOffload0
+AddInterface=%KSCATEGORY_TOPOLOGY%, %KSNAME_TopologySpeaker_Offload0%, I2SAudioInstall.I.TopologySpeakerOffload0
+
+; Interfaces for the render NonOffload endpoint
+AddInterface=%KSCATEGORY_AUDIO%,    %KSNAME_WaveSpeaker_NonOffload0%,     I2SAudioInstall.I.WaveSpeakerNonOffload0
+AddInterface=%KSCATEGORY_AUDIO%,    %KSNAME_TopologySpeaker_NonOffload0%, I2SAudioInstall.I.TopologySpeakerNonOffload0
+AddInterface=%KSCATEGORY_RENDER%,   %KSNAME_WaveSpeaker_NonOffload0%,     I2SAudioInstall.I.WaveSpeakerNonOffload0
+AddInterface=%KSCATEGORY_REALTIME%, %KSNAME_WaveSpeaker_NonOffload0%,     I2SAudioInstall.I.WaveSpeakerNonOffload0
+AddInterface=%KSCATEGORY_TOPOLOGY%, %KSNAME_TopologySpeaker_NonOffload0%, I2SAudioInstall.I.TopologySpeakerNonOffload0
+
+AddInterface=%KSCATEGORY_AUDIO%,    %KSNAME_WaveSpeaker1%,     I2SAudioInstall.I.WaveSpeaker1
+AddInterface=%KSCATEGORY_AUDIO%,    %KSNAME_TopologySpeaker1%, I2SAudioInstall.I.TopologySpeaker1
+AddInterface=%KSCATEGORY_RENDER%,   %KSNAME_WaveSpeaker1%,     I2SAudioInstall.I.WaveSpeaker1
+AddInterface=%KSCATEGORY_REALTIME%, %KSNAME_WaveSpeaker1%,     I2SAudioInstall.I.WaveSpeaker1
+AddInterface=%KSCATEGORY_TOPOLOGY%, %KSNAME_TopologySpeaker1%, I2SAudioInstall.I.TopologySpeaker1
+
+; Interfaces for microphone (external: headphone) capture endpoint 
+AddInterface=%KSCATEGORY_AUDIO%,    %KSNAME_WaveMicIn0%,        I2SAudioInstall.I.WaveMicIn0
+AddInterface=%KSCATEGORY_AUDIO%,    %KSNAME_TopologyMicIn0%,    I2SAudioInstall.I.TopologyMicIn0
+AddInterface=%KSCATEGORY_CAPTURE%,  %KSNAME_WaveMicIn0%,        I2SAudioInstall.I.WaveMicIn0
+AddInterface=%KSCATEGORY_REALTIME%, %KSNAME_WaveMicIn0%,        I2SAudioInstall.I.WaveMicIn0
+AddInterface=%KSCATEGORY_TOPOLOGY%, %KSNAME_TopologyMicIn0%,    I2SAudioInstall.I.TopologyMicIn0
+
+AddInterface=%KSCATEGORY_AUDIO%,    %KSNAME_WaveMicIn1%,        I2SAudioInstall.I.WaveMicIn1
+AddInterface=%KSCATEGORY_AUDIO%,    %KSNAME_TopologyMicIn1%,    I2SAudioInstall.I.TopologyMicIn1
+AddInterface=%KSCATEGORY_CAPTURE%,  %KSNAME_WaveMicIn1%,        I2SAudioInstall.I.WaveMicIn1
+AddInterface=%KSCATEGORY_REALTIME%, %KSNAME_WaveMicIn1%,        I2SAudioInstall.I.WaveMicIn1
+AddInterface=%KSCATEGORY_TOPOLOGY%, %KSNAME_TopologyMicIn1%,    I2SAudioInstall.I.TopologyMicIn1
+
+[I2SAudioInstall.SysFx.Render]
+HKR,"FX\\0",%PKEY_ItemNameDisplay%,,%FX_FriendlyName%
+HKR,"FX\\0",%PKEY_FX_StreamEffectClsid%,,%FX_STREAM_CLSID%
+HKR,"FX\\0",%PKEY_FX_ModeEffectClsid%,,%FX_MODE_CLSID%
+HKR,"FX\\0",%PKEY_FX_UiClsid%,,%FX_UI_CLSID%
+HKR,"FX\\0",%PKEY_FX_Association%,,%KSNODETYPE_ANY%
+HKR,"FX\\0",%PKEY_SFX_ProcessingModes_Supported_For_Streaming%,0x00010000,%AUDIO_SIGNALPROCESSINGMODE_DEFAULT%
+HKR,"FX\\0",%PKEY_MFX_ProcessingModes_Supported_For_Streaming%,0x00010000,%AUDIO_SIGNALPROCESSINGMODE_DEFAULT%
+
+[I2SAudioInstall.SysFx.Capture]
+HKR,"FX\\0",%PKEY_ItemNameDisplay%,,%FX_FriendlyName%
+HKR,"FX\\0",%PKEY_FX_StreamEffectClsid%,,%FX_STREAM_CLSID%
+HKR,"FX\\0",%PKEY_FX_ModeEffectClsid%,,%FX_MODE_CLSID%
+HKR,"FX\\0",%PKEY_FX_UiClsid%,,%FX_UI_CLSID%
+HKR,"FX\\0",%PKEY_FX_Association%,,%KSNODETYPE_ANY%
+HKR,"FX\\0",%PKEY_SFX_ProcessingModes_Supported_For_Streaming%,0x00010000,%AUDIO_SIGNALPROCESSINGMODE_DEFAULT%
+HKR,"FX\\0",%PKEY_MFX_ProcessingModes_Supported_For_Streaming%,0x00010000,%AUDIO_SIGNALPROCESSINGMODE_DEFAULT%
+
+;======================================================
+; render interfaces: speaker (internal)
+;======================================================
+[I2SAudioInstall.I.WaveSpeakerOffload0]
+AddReg=I2SAudioInstall.I.WaveSpeakerOffload0.AddReg
+
+[I2SAudioInstall.I.WaveSpeakerOffload0.AddReg]
+HKR,,FriendlyName,,%I2SAudioInstall.WaveSpeakerOffload0.szPname%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[I2SAudioInstall.I.TopologySpeakerOffload0]
+AddReg=I2SAudioInstall.I.TopologySpeakerOffload0.AddReg,I2SAudioInstall.SysFx.Render, EPPropertiesOffload.AddReg
+
+[I2SAudioInstall.I.TopologySpeakerOffload0.AddReg]
+HKR,,FriendlyName,,%I2SAudioInstall.TopologySpeakerOffload0.szPname%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[EPPropertiesOffload.AddReg]
+HKR,"EP\\0", %PKEY_AudioEndpoint_Association%,,%KSNODETYPE_ANY%
+HKR,"EP\\0", %PKEY_AudioEngine_OEMFormat%, 1,41,00,00,00,28,00,00,00,FE,FF,02,00,80,BB,00,00,00,EE,02,00,04,00,10,00,16,00,10,00,03,00,00,00,01,00,00,00,00,00,10,00,80,00,00,AA,00,38,9B,71
+HKR,"EP\\0", %PKEY_AudioEndpoint_Supports_EventDriven_Mode%,0x00010001,0x1
+
+[I2SAudioInstall.I.WaveSpeakerNonOffload0]
+AddReg=I2SAudioInstall.I.WaveSpeakerNonOffload0.AddReg
+
+[I2SAudioInstall.I.WaveSpeakerNonOffload0.AddReg]
+HKR,,FriendlyName,,%I2SAudioInstall.WaveSpeakerNonOffload0.szPname%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[I2SAudioInstall.I.TopologySpeakerNonOffload0]
+AddReg=I2SAudioInstall.I.TopologySpeakerNonOffload0.AddReg,I2SAudioInstall.SysFx.Render, EPPropertiesNonOffload.AddReg
+
+[I2SAudioInstall.I.TopologySpeakerNonOffload0.AddReg]
+HKR,,FriendlyName,,%I2SAudioInstall.TopologySpeakerNonOffload0.szPname%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[EPPropertiesNonOffload.AddReg]
+HKR,"EP\\0", %PKEY_AudioEndpoint_Association%,,%KSNODETYPE_ANY%
+HKR,"EP\\0", %PKEY_AudioEngine_OEMFormat%, 1, 41,00,00,00,28,00,00,00,FE,FF,02,00,80,BB,00,00,00,DC,05,00,08,00,20,00,16,00,18,00,03,00,00,00,01,00,00,00,00,00,10,00,80,00,00,AA,00,38,9B,71
+HKR,"EP\\0", %PKEY_AudioEndpoint_Supports_EventDriven_Mode%,0x00010001,0x1
+
+;======================================================
+; render interfaces: speaker - 2(internal)
+;======================================================
+[I2SAudioInstall.I.WaveSpeaker1]
+AddReg=I2SAudioInstall.I.WaveSpeaker1.AddReg
+
+[I2SAudioInstall.I.WaveSpeaker1.AddReg]
+HKR,,FriendlyName,,%I2SAudioInstall.WaveSpeaker1.szPname%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[I2SAudioInstall.I.TopologySpeaker1]
+AddReg=I2SAudioInstall.I.TopologySpeaker1.AddReg,I2SAudioInstall.SysFx.Render, EPPropertiesSpk.AddReg
+
+[I2SAudioInstall.I.TopologySpeaker1.AddReg]
+HKR,,FriendlyName,,%I2SAudioInstall.TopologySpeaker1.szPname%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[EPPropertiesSpk.AddReg]
+HKR,"EP\\0", %PKEY_AudioEndpoint_Association%,,%KSNODETYPE_ANY%
+HKR,"EP\\0", %PKEY_AudioEngine_OEMFormat%, 1, 41,00,00,00,28,00,00,00,FE,FF,02,00,80,BB,00,00,00,DC,05,00,08,00,20,00,16,00,18,00,03,00,00,00,01,00,00,00,00,00,10,00,80,00,00,AA,00,38,9B,71
+HKR,"EP\\0", %PKEY_AudioEndpoint_Supports_EventDriven_Mode%,0x00010001,0x1
+
+;======================================================
+; capture interfaces: mic in (external: headphone)
+;======================================================
+[I2SAudioInstall.I.WaveMicIn0]
+AddReg=I2SAudioInstall.I.WaveMicIn0.AddReg
+
+[I2SAudioInstall.I.WaveMicIn0.AddReg]
+HKR,,FriendlyName,,%I2SAudioInstall.WaveMicIn0.szPname%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[I2SAudioInstall.I.TopologyMicIn0]
+AddReg=I2SAudioInstall.I.TopologyMicIn0.AddReg,I2SAudioInstall.SysFx.Capture, EPPropertiesMic0.AddReg
+
+[I2SAudioInstall.I.TopologyMicIn0.AddReg]
+HKR,,FriendlyName,,%I2SAudioInstall.TopologyMicIn0.szPname%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[EPPropertiesMic0.AddReg]
+HKR,"EP\\0", %PKEY_AudioEndpoint_Association%,,%KSNODETYPE_ANY%
+HKR,"EP\\0", %PKEY_AudioEngine_OEMFormat%, 1, 41,00,00,00,28,00,00,00,FE,FF,02,00,80,BB,00,00,00,DC,05,00,08,00,20,00,16,00,18,00,03,00,00,00,01,00,00,00,00,00,10,00,80,00,00,AA,00,38,9B,71
+HKR,"EP\\0", %PKEY_AudioEndpoint_Supports_EventDriven_Mode%,0x00010001,0x1
+
+;======================================================
+; capture interfaces: mic in - 2(external: headphone)
+;======================================================
+[I2SAudioInstall.I.WaveMicIn1]
+AddReg=I2SAudioInstall.I.WaveMicIn1.AddReg
+
+[I2SAudioInstall.I.WaveMicIn1.AddReg]
+HKR,,FriendlyName,,%I2SAudioInstall.WaveMicIn1.szPname%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[I2SAudioInstall.I.TopologyMicIn1]
+AddReg=I2SAudioInstall.I.TopologyMicIn1.AddReg,I2SAudioInstall.SysFx.Capture, EPPropertiesMic1.AddReg
+
+[I2SAudioInstall.I.TopologyMicIn1.AddReg]
+HKR,,FriendlyName,,%I2SAudioInstall.TopologyMicIn1.szPname%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[EPPropertiesMic1.AddReg]
+HKR,"EP\\0", %PKEY_AudioEndpoint_Association%,,%KSNODETYPE_ANY%
+HKR,"EP\\0", %PKEY_AudioEngine_OEMFormat%, 1, 41,00,00,00,28,00,00,00,FE,FF,02,00,80,BB,00,00,00,DC,05,00,08,00,20,00,16,00,18,00,03,00,00,00,01,00,00,00,00,00,10,00,80,00,00,AA,00,38,9B,71
+HKR,"EP\\0", %PKEY_AudioEndpoint_Supports_EventDriven_Mode%,0x00010001,0x1
+
+[HdAudSecurity.AddReg]
+; FILE_DEVICE_SOUND
+HKR,,DeviceType,0x10001,0x0000001D
+; SDDL_DEVOBJ_SYS_ALL_ADM_RWX_WORLD_RWX_RES_RWX
+HKR,,Security,,"D:P(A;;GA;;;SY)(A;;GRGWGX;;;BA)(A;;GRGWGX;;;WD)(A;;GRGWGX;;;RC)"
+
+;======================================================
+; WDF
+;======================================================
+[I2SAudioInstall.Wdf]
+KmdfService = AMDI2SAudioService, I2SAudio_Install_WdfSect
+[I2SAudio_Install_WdfSect]
+KmdfLibraryVersion = 1.11
+
+[Strings]
+
+AMD                                                    = "Advanced Micro Devices"
+ManufacturerName                                       = "Advanced Micro Devices"
+DiskName                                               = "I2S Audio Source Disk"
+I2SAudioDeviceDescription                              = "AMD I2S Audio Device"
+AMDI2SAudioDriver.SvcDesc                              = "AMD Function Driver for I2S Controller"  
+                                                       
+KSNAME_WaveSpeaker_Offload0                            = "WaveSpeaker_Offload0"
+KSNAME_TopologySpeaker_Offload0                        = "TopologySpeaker_Offload0"
+                                                       
+KSNAME_WaveSpeaker_NonOffload0                         = "WaveSpeaker_NonOffload0"
+KSNAME_TopologySpeaker_NonOffload0                     = "TopologySpeaker_NonOffload0"
+                                                       
+KSNAME_WaveSpeaker1                                    = "WaveSpeaker1"
+KSNAME_TopologySpeaker1                                = "TopologySpeaker1"
+                                                       
+KSNAME_WaveMicIn0                                      = "WaveMicIn0"
+KSNAME_TopologyMicIn0                                  = "TopologyMicIn0"
+                                                       
+KSNAME_WaveMicIn1                                      = "WaveMicIn1"
+KSNAME_TopologyMicIn1                                  = "TopologyMicIn1"
+                                                       
+I2SAudioInstall.WaveSpeakerOffload0.szPname            = "I2SAudioInstall Wave Speaker Offload - 0"
+I2SAudioInstall.TopologySpeakerOffload0.szPname        = "I2SAudioInstall Topology Speaker Offload - 0"
+
+I2SAudioInstall.WaveSpeakerNonOffload0.szPname         = "I2SAudioInstall Wave Speaker NonOffload - 0"
+I2SAudioInstall.TopologySpeakerNonOffload0.szPname     = "I2SAudioInstall Topology Speaker NonOffload - 0"
+
+I2SAudioInstall.WaveSpeaker1.szPname                   = "I2SAudioInstall Wave Speaker - 1"
+I2SAudioInstall.TopologySpeaker1.szPname               = "I2SAudioInstall Topology Speaker - 1"
+                                                       
+I2SAudioInstall.WaveMicIn0.szPname                     = "I2SAudioInstall Wave Microphone - 0"
+I2SAudioInstall.TopologyMicIn0.szPname                 = "I2SAudioInstall Topology Microphone - 0"
+                                                         
+I2SAudioInstall.WaveMicIn1.szPname                     = "I2SAudioInstall Wave Microphone - 1"
+I2SAudioInstall.TopologyMicIn1.szPname                 = "I2SAudioInstall Topology Microphone - 1"
+
+KSCATEGORY_AUDIO                                       = "{6994AD04-93EF-11D0-A3CC-00A0C9223196}"
+KSCATEGORY_RENDER                                      = "{65E8773E-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_CAPTURE                                     = "{65E8773D-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_TOPOLOGY                                    = "{DDA54A40-1E4C-11D1-A050-405705C10000}"
+KSCATEGORY_REALTIME                                    = "{EB115FFC-10C8-4964-831D-6DCB02E6F23F}"
+Proxy.CLSID                                            = "{17CCA71B-ECD7-11D0-B908-00A0C9223196}"
+                                                       
+PKEY_FX_Association                                    = "{D04E05A6-594B-4fb6-A80D-01AF5EED7D1D},0"
+PKEY_FX_StreamEffectClsid                              = "{D04E05A6-594B-4fb6-A80D-01AF5EED7D1D},5"
+PKEY_FX_ModeEffectClsid                                = "{D04E05A6-594B-4fb6-A80D-01AF5EED7D1D},6"
+PKEY_FX_UiClsid                                        = "{D04E05A6-594B-4fb6-A80D-01AF5EED7D1D},3"
+PKEY_ItemNameDisplay                                   = "{B725F130-47EF-101A-A5F1-02608C9EEBAC},10"
+
+PKEY_SFX_ProcessingModes_Supported_For_Streaming       = "{D3993A3F-99C2-4402-B5EC-A92A0367664B},5"
+PKEY_MFX_ProcessingModes_Supported_For_Streaming       = "{D3993A3F-99C2-4402-B5EC-A92A0367664B},6"
+
+AUDIO_SIGNALPROCESSINGMODE_DEFAULT                     = "{C18E2F7E-933D-4965-B7D1-1EEF228D2AF3}"
+
+FX_UI_CLSID                                            = "{5860E1C5-F95C-4a7a-8EC8-8AEF24F379A1}"
+KSNODETYPE_ANY                                         = "{00000000-0000-0000-0000-000000000000}"
+FX_STREAM_CLSID                                        = "{62dc1a93-ae24-464c-a43e-452f824c4250}"
+FX_MODE_CLSID                                          = "{637c490d-eee3-4c0a-973f-371958802da2}"
+FX_FriendlyName                                        = "Microsoft Audio Home Theater Effects"
+                                                       
+PKEY_AudioEndpoint_Association                         = "{1DA5D803-D492-4EDD-8C23-E0C0FFEE7F0E},2"
+PKEY_AudioEngine_OEMFormat                             = "{E4870E26-3CC5-4CD2-BA46-CA0A9A70ED04},3"
+PKEY_AudioEndpoint_Supports_EventDriven_Mode           = "{1DA5D803-D492-4EDD-8C23-E0C0FFEE7F0E},7"
+                                                       
+MEDIA_CATEGORIES                                       = "SYSTEM\CurrentControlSet\Control\MediaCategories"
+MicInCustomNameGUID                                    = "{d48deb08-fd1c-4d1e-b821-9064d49ae96e}"
+                                                       
+MicInCustomName                                        = "External Microphone"

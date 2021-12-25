@@ -1,0 +1,156 @@
+; ****************************************************************************
+; ****************************************************************************
+; **    Filename:  E5100.inf (82XXX Chipset)                                                 
+; **    Abstract:  Windows* 2K, XP, 2003, 2008, Vista INF File for 
+; **		           Memory I/O Controller Hub 
+; **    Last Update: April 30, 2008 (Version 8.6.0 Build 1002)
+; ****************************************************************************
+; ****************************************************************************
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%INTEL%
+CatalogFile=E5100.cat
+DriverVer=04/30/2008, 8.6.1.1002
+
+[SourceDisksNames]
+[sourcedisksfiles]
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[Manufacturer]
+%INTEL%=INTEL_SYS,NTamd64
+
+[INTEL_SYS]
+
+%PCI\VEN_8086&DEV_65C0.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_65C0
+%PCI\VEN_8086&DEV_65E2.DeviceDesc%=INTEL_PCI,PCI\VEN_8086&DEV_65E2
+%PCI\VEN_8086&DEV_65E3.DeviceDesc%=INTEL_PCI,PCI\VEN_8086&DEV_65E3
+%PCI\VEN_8086&DEV_65E4.DeviceDesc%=INTEL_PCI,PCI\VEN_8086&DEV_65E4
+%PCI\VEN_8086&DEV_65E5.DeviceDesc%=INTEL_PCI,PCI\VEN_8086&DEV_65E5
+%PCI\VEN_8086&DEV_65E6.DeviceDesc%=INTEL_PCI,PCI\VEN_8086&DEV_65E6
+%PCI\VEN_8086&DEV_65E7.DeviceDesc%=INTEL_PCI,PCI\VEN_8086&DEV_65E7
+%PCI\VEN_8086&DEV_65F0.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_65F0
+%PCI\VEN_8086&DEV_65F1.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_65F1
+%PCI\VEN_8086&DEV_65F2.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_65F3
+%PCI\VEN_8086&DEV_65F5.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_65F5
+%PCI\VEN_8086&DEV_65F6.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_65F6
+%PCI\VEN_8086&DEV_65F7.DeviceDesc%=INTEL_PCI,PCI\VEN_8086&DEV_65F7
+%PCI\VEN_8086&DEV_65F8.DeviceDesc%=INTEL_PCI,PCI\VEN_8086&DEV_65F8
+%PCI\VEN_8086&DEV_65F9.DeviceDesc%=INTEL_PCI,PCI\VEN_8086&DEV_65F9
+%PCI\VEN_8086&DEV_65FA.DeviceDesc%=INTEL_PCI,PCI\VEN_8086&DEV_65FA
+%PCI\VEN_8086&DEV_65FF.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_65FF
+
+[INTEL_SYS.NTamd64]
+%PCI\VEN_8086&DEV_65C0.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_65C0
+%PCI\VEN_8086&DEV_65E2.DeviceDesc%=INTEL_PCI,PCI\VEN_8086&DEV_65E2
+%PCI\VEN_8086&DEV_65E3.DeviceDesc%=INTEL_PCI,PCI\VEN_8086&DEV_65E3
+%PCI\VEN_8086&DEV_65E4.DeviceDesc%=INTEL_PCI,PCI\VEN_8086&DEV_65E4
+%PCI\VEN_8086&DEV_65E5.DeviceDesc%=INTEL_PCI,PCI\VEN_8086&DEV_65E5
+%PCI\VEN_8086&DEV_65E6.DeviceDesc%=INTEL_PCI,PCI\VEN_8086&DEV_65E6
+%PCI\VEN_8086&DEV_65E7.DeviceDesc%=INTEL_PCI,PCI\VEN_8086&DEV_65E7
+%PCI\VEN_8086&DEV_65F0.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_65F0
+%PCI\VEN_8086&DEV_65F1.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_65F1
+%PCI\VEN_8086&DEV_65F2.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_65F3
+%PCI\VEN_8086&DEV_65F5.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_65F5
+%PCI\VEN_8086&DEV_65F6.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_65F6
+%PCI\VEN_8086&DEV_65F7.DeviceDesc%=INTEL_PCI,PCI\VEN_8086&DEV_65F7
+%PCI\VEN_8086&DEV_65F8.DeviceDesc%=INTEL_PCI,PCI\VEN_8086&DEV_65F8
+%PCI\VEN_8086&DEV_65F9.DeviceDesc%=INTEL_PCI,PCI\VEN_8086&DEV_65F9
+%PCI\VEN_8086&DEV_65FA.DeviceDesc%=INTEL_PCI,PCI\VEN_8086&DEV_65FA
+%PCI\VEN_8086&DEV_65FF.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_65FF
+
+[INTEL_PCI]
+Include=machine.inf
+Needs=PCI_DRV
+
+[INTEL_PCI.Services]
+Include=machine.inf
+Needs=PCI_DRV.Services
+
+[INTEL_PCI.HW]
+Include=machine.inf
+Needs=PCI_DRV.HW
+
+;**************************************************************************
+; Do-nothing section used to avoid "Unknown hardware" installation prompts.
+
+[NO_DRV]
+AddReg=INF_VER
+Include=machine.inf
+Needs=NO_DRV
+
+[NO_DRV.Services]
+Include=machine.inf
+Needs=NO_DRV.Services
+
+;****************************************************
+; Generic ISA Root Bus / PCI-ISA Bridge / PCI-EISA Bridge
+
+[ISAPNP_DRV]
+Include=machine.inf
+Needs=ISAPNP_DRV
+
+[ISAPNP_DRV.Services]
+Include=machine.inf
+Needs=ISAPNP_DRV.Services
+
+[INF_VER]
+HKLM,Software\Intel\InfInst,Infver,,"8.6.0"
+
+[Strings]
+INTEL="Intel"
+
+PCI\VEN_8086&DEV_65C0.DeviceDesc="Intel(R) 5100 Chipset Memory Controller Hub - 65C0"
+PCI\VEN_8086&DEV_65E2.DeviceDesc="Intel(R) 5100 Chipset PCI Express x4 Port 2 - 65E2"
+PCI\VEN_8086&DEV_65E3.DeviceDesc="Intel(R) 5100 Chipset PCI Express x4 Port 3 - 65E3"
+PCI\VEN_8086&DEV_65E4.DeviceDesc="Intel(R) 5100 Chipset PCI Express x4 Port 4 - 65E4"
+PCI\VEN_8086&DEV_65E5.DeviceDesc="Intel(R) 5100 Chipset PCI Express x4 Port 5 - 65E5"
+PCI\VEN_8086&DEV_65E6.DeviceDesc="Intel(R) 5100 Chipset PCI Express x4 Port 6 - 65E6"
+PCI\VEN_8086&DEV_65E7.DeviceDesc="Intel(R) 5100 Chipset PCI Express x4 Port 7 - 65E7"
+PCI\VEN_8086&DEV_65F0.DeviceDesc="Intel(R) 5100 Chipset FSB Registers - 65F0"
+PCI\VEN_8086&DEV_65F1.DeviceDesc="Intel(R) 5100 Chipset Reserved Registers - 65F1"
+PCI\VEN_8086&DEV_65F2.DeviceDesc="Intel(R) 5100 Chipset Reserved Registers - 65F3"
+PCI\VEN_8086&DEV_65F5.DeviceDesc="Intel(R) 5100 Chipset DDR Channel 0 Registers - 65F5"
+PCI\VEN_8086&DEV_65F6.DeviceDesc="Intel(R) 5100 Chipset DDR Channel 1 Registers - 65F6"
+PCI\VEN_8086&DEV_65F7.DeviceDesc="Intel(R) 5100 Chipset PCI Express x8 Port 2-3 - 65F7"
+PCI\VEN_8086&DEV_65F8.DeviceDesc="Intel(R) 5100 Chipset PCI Express x8 Port 4-5 - 65F8"
+PCI\VEN_8086&DEV_65F9.DeviceDesc="Intel(R) 5100 Chipset PCI Express x8 Port 6-7 - 65F9"
+PCI\VEN_8086&DEV_65FA.DeviceDesc="Intel(R) 5100 Chipset PCI Express x16 Port 4-7 - 65FA"
+PCI\VEN_8086&DEV_65FF.DeviceDesc="Intel(R) 5100 Chipset DMA Engine - 65FF"
+
+
+; Copyright (c) 2003-2008 Intel Corporation
+
+; ************************************************************
+; Intel is making no claims of usability, efficacy or 
+; warranty.  
+; ************************************************************
+; Information in this document is provided in connection with 
+; Intel products.  No license, express or implied, by estoppel 
+; or otherwise, to any intellectual property rights is granted 
+; by this document.  Intel assumes no liability whatsoever, 
+; and Intel disclaims any express or implied warranty, 
+; relating to sale and/or use of Intel products including 
+; liability or warranties relating to fitness for a particular 
+; purpose, merchantability, or infringement of any patent, 
+; copyright or other intellectual property right.  Intel 
+; products are not intended for use in medical, life saving, 
+; or life sustaining applications.
+
+; ************************************************************
+; Intel Corporation disclaims all warranties and liabilities 
+; for the use of this document and the information contained 
+; herein, and assumes no responsibility for any errors which 
+; may appear in this document, nor does Intel make a 
+; commitment to update the information contained herein. Intel 
+; reserves the right to make changes to this document at any 
+; time, without notice.
+; ************************************************************
+; ************************************************************
+
+; * Third-party brands and names are the property of their 
+; respective owners.

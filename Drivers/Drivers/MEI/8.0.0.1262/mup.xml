@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--Created With CreateMup.exe Version 1.0.2012.0118-->
+<MUPDefinition xmlns="http://schemas.dell.com/openmanage/cm/2/0/mupdefinition.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.dell.com/openmanage/cm/2/0/mupdefinition.xsd mupdefinition.xsd">
+  <packageinformation>
+    <installertype>installshield installscript</installertype>
+    <packagegrouping>single_package</packagegrouping>
+    <packagingtype>zip</packagingtype>
+    <releasetype>DRVR</releasetype>
+    <mupspecificationversion>2.1.0</mupspecificationversion>
+    <version>8.0.10.1464</version>
+    <name>Intel(R) Management Engine Firmware</name>
+    <supportedoperatingsystems>
+      <osidentifier name="XP" architecture="x64" />
+      <osidentifier name="XP" architecture="x86" />
+      <osidentifier name="W2K3" architecture="x64" />
+      <osidentifier name="W2K3" architecture="x86" />
+      <osidentifier name="Vista" architecture="x64" />
+      <osidentifier name="Vista" architecture="x86" />
+      <osidentifier name="W2K8" architecture="x64" />
+      <osidentifier name="W2K8" architecture="x86" />
+      <osidentifier name="Windows7" architecture="x64" />
+      <osidentifier name="Windows7" architecture="x86" />
+    </supportedoperatingsystems>
+  </packageinformation>
+  <executable>
+    <executablename>setup.exe</executablename>
+  </executable>
+  <behaviors>
+    <behavior name="driveronly">
+      <vendoroption>
+        <optionvalue switch="/" requiresvalue="false">noIMSS</optionvalue>
+      </vendoroption>
+    </behavior>
+    <behavior name="applicationonly">
+      <vendoroption>
+        <optionvalue switch="/" requiresvalue="false">nodrv</optionvalue>
+      </vendoroption>
+    </behavior>
+    <behavior name="extractdrivers">
+      <vendoroption>
+        <container>
+          <containervalue switch="/" requiresvalue="false" valuedelimiter=" " enclose="&quot;">v</containervalue>
+          <optionvalue switch="" requiresvalue="true" valuedelimiter="=" enclose="\&quot;">ExtractDrivers</optionvalue>
+        </container>
+      </vendoroption>
+    </behavior>
+    <behavior name="attended" />
+    <behavior name="help">
+      <vendoroption>
+        <optionvalue switch="/" requiresvalue="false">?</optionvalue>
+      </vendoroption>
+    </behavior>
+    <behavior name="unattended">
+      <vendoroption>
+        <optionvalue switch="/" requiresvalue="false">s</optionvalue>
+      </vendoroption>
+      <!-- The DUP will Restart the system
+      <vendoroption>
+        <optionvalue switch="/" requiresvalue="false">b</optionvalue>
+      </vendoroption>
+      -->
+    </behavior>
+  </behaviors>
+  <parameters>
+    <parametermapping name="force">
+      <vendoroption>
+        <optionvalue switch="/" requiresvalue="false">overwrite</optionvalue>
+      </vendoroption>
+    </parametermapping>
+    <parametermapping name="logfile">
+      <vendoroption>
+        <optionvalue switch="/" requiresvalue="true" valuedelimiter=" " enclose="&quot;">report</optionvalue>
+      </vendoroption>
+    </parametermapping>
+  </parameters>
+  <returncodes>
+    <returncodemapping name="REBOOTING_SYSTEM">
+      <vendorreturncode>15</vendorreturncode>
+    </returncodemapping>
+    <returncodemapping name="PASSWORD_REQUIRED">
+      <vendorreturncode>2</vendorreturncode>
+    </returncodemapping>
+    <returncodemapping name="NO_DOWNGRADE">
+      <!--Always able to DownGrade, Installer Doesn't need to support-->
+      <vendorreturncode>9999</vendorreturncode>
+    </returncodemapping>
+    <returncodemapping name="REBOOT_UPDATE_PENDING">
+      <!--Installer only Reboots Once, Installer Doesn't need to support-->
+      <vendorreturncode>13</vendorreturncode>
+    </returncodemapping>
+    <returncodemapping name="DEP_SOFT_ERROR">
+      <vendorreturncode>7</vendorreturncode>
+    </returncodemapping>
+    <returncodemapping name="DEP_HARD_ERROR">
+      <vendorreturncode>5</vendorreturncode>
+    </returncodemapping>
+    <returncodemapping name="SUCCESS">
+      <vendorreturncode>0</vendorreturncode>
+    </returncodemapping>
+    <returncodemapping name="ERROR">
+      <vendorreturncode>10</vendorreturncode>
+    </returncodemapping>
+    <returncodemapping name="ERROR">
+      <vendorreturncode>11</vendorreturncode>
+    </returncodemapping>
+    <returncodemapping name="ERROR">
+      <vendorreturncode>12</vendorreturncode>
+    </returncodemapping>
+    <returncodemapping name="ERROR">
+      <vendorreturncode>16</vendorreturncode>
+    </returncodemapping>
+    <returncodemapping name="ERROR">
+      <vendorreturncode>17</vendorreturncode>
+    </returncodemapping>
+    <returncodemapping name="REBOOT_REQUIRED">
+      <vendorreturncode>14</vendorreturncode>
+    </returncodemapping>
+    <returncodemapping name="REBOOT_REQUIRED">
+      <vendorreturncode>255</vendorreturncode>
+    </returncodemapping>
+    <returncodemapping name="ERROR_INSTALL_PLATFORM_UNSUPPORTED">
+      <vendorreturncode>3</vendorreturncode>
+    </returncodemapping>
+    <returncodemapping name="UNKNOWN_OPTION">
+      <vendorreturncode>1</vendorreturncode>
+    </returncodemapping>
+    <returncodemapping name="ERROR">
+      <vendorreturncode>9</vendorreturncode>
+    </returncodemapping>
+    <returncodemapping name="ERROR">
+      <vendorreturncode>6</vendorreturncode>
+    </returncodemapping>
+    <returncodemapping name="ERROR">
+      <vendorreturncode>4</vendorreturncode>
+    </returncodemapping>
+  </returncodes>
+  <inventorymetadata>
+    <extractdriversidentifier>
+      <softwareidentityinstances>
+        <!--filename: \Setup.exe-->
+        <softwareidentity>
+          <elementname>Intel(R) Management Engine Components installer</elementname>
+          <versionstring>1.4.42.0</versionstring>
+        </softwareidentity>
+        <!--filename: \x64\Drv64.exe-->
+        <softwareidentity>
+          <elementname>64 bit driver installer</elementname>
+          <versionstring>1.4.1.0</versionstring>
+        </softwareidentity>
+        <!--filename: \x64\MEcp64.exe-->
+        <softwareidentity>
+          <elementname>Intel® AMT Device Port Assigner</elementname>
+          <versionstring>1.0.1.0</versionstring>
+        </softwareidentity>
+        <!--filename: \UNS\UNS.exe-->
+        <softwareidentity>
+          <elementname>User Notification Service</elementname>
+          <versionstring>8.0.10.1464</versionstring>
+        </softwareidentity>
+        <!--filename: \LMS\LMS.exe-->
+        <softwareidentity>
+          <elementname>Local Manageability Service</elementname>
+          <versionstring>8.0.10.1464</versionstring>
+        </softwareidentity>
+        <!--filename: \Intel Control Center\SetupICC.exe-->
+        <softwareidentity>
+          <elementname>Intel® Control Center</elementname>
+          <versionstring>1.1.13.0</versionstring>
+        </softwareidentity>
+        <!--filename: \DAL\jhi_service.exe-->
+        <softwareidentity>
+          <elementname>Intel(R) Dynamic Application Loader Host Interface</elementname>
+          <versionstring>8.0.10.1464</versionstring>
+        </softwareidentity>
+        <!--filename: \DAL\vcredist_x64.exe-->
+        <softwareidentity>
+          <elementname>Microsoft Visual C++ 2010  x64 Redistributable Setup</elementname>
+          <versionstring>10.0.40219.325</versionstring>
+        </softwareidentity>
+        <!--filename: \DAL\vcredist_x86.exe-->
+        <softwareidentity>
+          <elementname>Microsoft Visual C++ 2010  x86 Redistributable Setup</elementname>
+          <versionstring>10.0.40219.325</versionstring>
+        </softwareidentity>
+      </softwareidentityinstances>
+      <pnpids>
+        <pnpdevice>
+          <!--filename: \Drivers\MEI\HECI.inf-->
+          <driverversion>8.0.0.1262</driverversion>
+          <pnpidstring>PCI\VEN_8086&amp;DEV_1E3A</pnpidstring>
+          <pnpidstring>PCI\VEN_8086&amp;DEV_1CBA</pnpidstring>
+          <pnpidstring>PCI\VEN_8086&amp;DEV_1C3A</pnpidstring>
+          <pnpidstring>PCI\VEN_8086&amp;DEV_1DBA</pnpidstring>
+        </pnpdevice>
+      </pnpids>
+    </extractdriversidentifier>
+    <fullpackageidentifier>
+      <msis>
+        <msi>
+          <identifyingnumber>{65153EA5-8B6E-43B6-857B-C6E4FC25798A}</identifyingnumber>
+          <version>8.0.10.1464</version>
+          <upgradecode>{65153EA5-8B6E-43B6-857B-C6E4FC25798A}</upgradecode>
+        </msi>
+      </msis>
+    </fullpackageidentifier>
+  </inventorymetadata>
+</MUPDefinition>

@@ -1,0 +1,104 @@
+; ****************************************************************************
+; ****************************************************************************
+; **    Filename:  PantIDE.INF
+; **    Abstract:  Windows* 2K, XP, and 2003 Server, Vista INF File for 
+; **               Intel(R) IDE device 
+; **    Last Update: July 15, 2011 (Version 9.3.0 Build 1008)
+; ****************************************************************************
+; ****************************************************************************
+
+[version]
+Signature="$WINDOWS NT$"
+Class=hdc
+ClassGuid={4D36E96A-E325-11CE-BFC1-08002BE10318}
+Provider=%INTEL%
+CatalogFile=PantIDE.cat
+DriverVer=07/15/2011, 9.3.0.1008
+
+[SourceDisksNames] 
+[SourceDisksFiles] 
+
+[PackageInfo]
+Name=Chipset
+Condition=InstalledDriverSection(pciide_Inst)
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[Manufacturer]
+%INTEL%=INTEL_HDC,NTamd64
+
+[INTEL_HDC]
+;IDE
+%PCI\VEN_8086&DEV_1E00.DeviceDesc%=pciide_Inst,PCI\VEN_8086&DEV_1E00
+%PCI\VEN_8086&DEV_1E01.DeviceDesc%=pciide_Inst,PCI\VEN_8086&DEV_1E01
+%PCI\VEN_8086&DEV_1E08.DeviceDesc%=pciide_Inst,PCI\VEN_8086&DEV_1E08
+%PCI\VEN_8086&DEV_1E09.DeviceDesc%=pciide_Inst,PCI\VEN_8086&DEV_1E09
+
+
+[INTEL_HDC.NTamd64]
+;IDE
+%PCI\VEN_8086&DEV_1E00.DeviceDesc%=pciide_Inst,PCI\VEN_8086&DEV_1E00
+%PCI\VEN_8086&DEV_1E01.DeviceDesc%=pciide_Inst,PCI\VEN_8086&DEV_1E01
+%PCI\VEN_8086&DEV_1E08.DeviceDesc%=pciide_Inst,PCI\VEN_8086&DEV_1E08
+%PCI\VEN_8086&DEV_1E09.DeviceDesc%=pciide_Inst,PCI\VEN_8086&DEV_1E09
+
+
+;**********************************************************
+; Intel PCI IDE Controller (DUAL_GOOD_IDE)
+
+[pciide_Inst]
+Include=mshdc.inf
+Needs=pciide_Inst
+
+[pciide_Inst.Services]
+Include=mshdc.inf
+Needs=pciide_Inst.Services
+
+[pciide_Inst.PosDup]
+*PNP0600
+
+[Strings]
+INTEL="Intel"
+;IDE
+PCI\VEN_8086&DEV_1E00.DeviceDesc="Intel(R) 7 Series/C216 Chipset Family 4 port Serial ATA Storage Controller - 1E00"
+PCI\VEN_8086&DEV_1E01.DeviceDesc="Intel(R) 7 Series/C216 Chipset Family 4 port Serial ATA Storage Controller - 1E01"
+PCI\VEN_8086&DEV_1E08.DeviceDesc="Intel(R) 7 Series/C216 Chipset Family 2 port Serial ATA Storage Controller - 1E08"
+PCI\VEN_8086&DEV_1E09.DeviceDesc="Intel(R) 7 Series/C216 Chipset Family 2 port Serial ATA Storage Controller - 1E09"
+
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+REG_DWORD              = 0x00010001
+
+; Copyright (c) 2006-2010 Intel Corporation
+
+; ************************************************************
+; Intel is making no claims of usability, efficacy or 
+; warranty.  
+; ************************************************************
+; Information in this document is provided in connection with 
+; Intel products.  No license, express or implied, by estoppel 
+; or otherwise, to any intellectual property rights is granted 
+; by this document.  Intel assumes no liability whatsoever, 
+; and Intel disclaims any express or implied warranty, 
+; relating to sale and/or use of Intel products including 
+; liability or warranties relating to fitness for a particular 
+; purpose, merchantability, or infringement of any patent, 
+; copyright or other intellectual property right.  Intel 
+; products are not intended for use in medical, life saving, 
+; or life sustaining applications.
+
+; ************************************************************
+; Intel Corporation disclaims all warranties and liabilities 
+; for the use of this document and the information contained 
+; herein, and assumes no responsibility for any errors which 
+; may appear in this document, nor does Intel make a 
+; commitment to update the information contained herein. Intel 
+; reserves the right to make changes to this document at any 
+; time, without notice.
+; ************************************************************
+; ************************************************************
+
+; * Third-party brands and names are the property of their 
+; respective owners.

@@ -1,0 +1,17 @@
+************* UnifL - manual installation instructions *************
+
+1. Navigate to Intel folder ,then to respective unpacked version.
+2. Run Intel's "setup.exe".
+3. Follow on-screen instructions.
+
+4. Reboot.
+
+5. Navigate to AMD folder, then to respective unpacked version.
+6. Run AMD's "setup.exe".
+7. Follow on-screen instructions.
+
+8. Reboot even if not prompted.
+
+9. Enjoy!
+
+************* UnifL - manual installation instructions *************

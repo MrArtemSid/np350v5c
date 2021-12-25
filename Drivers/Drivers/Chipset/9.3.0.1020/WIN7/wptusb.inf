@@ -1,0 +1,129 @@
+; ****************************************************************************
+; ****************************************************************************
+; **    Filename:  WptUSB.INF                                              
+; **    Abstract:  Windows* INF for Intel(R) SM35 Express Chipset               
+; **    Last Update: March 27, 2011 (Version 9.2.2 Build 1022)
+; ****************************************************************************
+; ****************************************************************************
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=USB
+ClassGUID={36FC9E60-C465-11CF-8056-444553540000}
+Provider=%INTEL%
+CatalogFile=wptusb.cat
+DriverVer=03/27/2011, 9.2.2.1022
+
+[SourceDisksNames] 
+[SourceDisksFiles] 
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+; =================== Table of content =========================
+
+[Manufacturer]
+%INTEL%=Intel,NT.5.1,NTamd64
+
+; =================== Intel ====================================
+
+[Intel]
+%PCI\VEN_8086&DEV_0806.DeviceDesc%=INTEL_USB2_2K,PCI\VEN_8086&DEV_0806
+%PCI\VEN_8086&DEV_0811.DeviceDesc%=INTEL_USB2_2K,PCI\VEN_8086&DEV_0811
+
+[Intel.NT.5.1]
+%PCI\VEN_8086&DEV_0806.DeviceDesc%=INTEL_USB2,PCI\VEN_8086&DEV_0806
+%PCI\VEN_8086&DEV_0811.DeviceDesc%=INTEL_USB2,PCI\VEN_8086&DEV_0811
+
+[Intel.NTamd64]
+%PCI\VEN_8086&DEV_0806.DeviceDesc%=INTEL_USB2,PCI\VEN_8086&DEV_0806
+%PCI\VEN_8086&DEV_0811.DeviceDesc%=INTEL_USB2,PCI\VEN_8086&DEV_0811
+
+; For Windows 2000 Only
+; For USB2 Support
+[INTEL_USB2_2K.NT]
+AddReg = USB2_ADDREG
+Include=usb.inf
+Needs=EHCI.NT
+
+[INTEL_USB2_2K.NT.Services]
+Include=usb.inf
+Needs=EHCI.NT.Services
+
+[INTEL_USB2_2K.NT.HW]
+AddReg = USB2_Device_Parm_ADDREG
+
+
+; For Windowns XP and greater
+; For USB2 Support
+[INTEL_USB2.NT]
+AddReg = USB2_ADDREG
+Include=usbport.inf
+Needs=EHCI.Dev.NT
+
+[INTEL_USB2.NT.Services]
+Include=usbport.inf
+Needs=EHCI.Dev.NT.Services
+
+[INTEL_USB2.NT.CoInstallers]
+Include=usbport.inf
+Needs=EHCI.Dev.NT.CoInstallers
+
+[INTEL_USB2.NT.HW]
+AddReg = USB2_Device_Parm_ADDREG
+
+
+[USB2_ADDREG]
+HKLM, SYSTEM\CurrentControlSet\Control\usbflags\808700240000,NoClearTTBufferOnCancel,0x00000001,0x01
+
+[USB2_Device_Parm_ADDREG]
+HKR,,EnHcSoftRetry,0x00010001,1
+HKR,,EnResetPostProcessing,0x00010001,1
+HKR,,HcSoftPerSecRetryCount,0x00010001,65535
+HKR,,MissedMicroframePerSecRetryCount,0x00010001,1000
+
+
+
+
+[Strings]
+INTEL="Intel"
+;WhitneyPoint
+PCI\VEN_8086&DEV_0806.DeviceDesc="Intel(R) SM35 Express Chipset USB2 Enhanced Host Controller MPH  - 0806"
+PCI\VEN_8086&DEV_0811.DeviceDesc="Intel(R) SM35 Express Chipset USB2 Enhanced Host Controller SPM  - 0811"
+
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+REG_DWORD              = 0x00010001
+
+; Copyright (c) 2010 Intel Corporation
+
+; ************************************************************
+; Intel is making no claims of usability, efficacy or 
+; warranty.  
+; ************************************************************
+; Information in this document is provided in connection with 
+; Intel products.  No license, express or implied, by estoppel 
+; or otherwise, to any intellectual property rights is granted 
+; by this document.  Intel assumes no liability whatsoever, 
+; and Intel disclaims any express or implied warranty, 
+; relating to sale and/or use of Intel products including 
+; liability or warranties relating to fitness for a particular 
+; purpose, merchantability, or infringement of any patent, 
+; copyright or other intellectual property right.  Intel 
+; products are not intended for use in medical, life saving, 
+; or life sustaining applications.
+
+; ************************************************************
+; Intel Corporation disclaims all warranties and liabilities 
+; for the use of this document and the information contained 
+; herein, and assumes no responsibility for any errors which 
+; may appear in this document, nor does Intel make a 
+; commitment to update the information contained herein. Intel 
+; reserves the right to make changes to this document at any 
+; time, without notice.
+; ************************************************************
+; ************************************************************
+
+; * Third-party brands and names are the property of their 
+; respective owners.

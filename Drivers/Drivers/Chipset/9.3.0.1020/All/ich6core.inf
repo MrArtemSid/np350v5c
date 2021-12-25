@@ -1,0 +1,119 @@
+; ****************************************************************************
+; ****************************************************************************
+; **    Filename:  ICH6CORE.INF                                                 
+; **    Abstract:  Windows* 2K, XP, 2003 Server INF File for 
+; **               Intel(R) 82801 core devices
+; **    Last Update: January 10, 2005 (Version 7.0.0 Build 1011)
+; ****************************************************************************
+; ****************************************************************************
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%INTEL%
+CatalogFile=ich6core.cat
+DriverVer=01/10/2005, 7.0.0.1011
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[Manufacturer]
+%INTEL%=INTEL_SYS,NTamd64
+
+[INTEL_SYS]
+%PCI\VEN_8086&DEV_2640.DeviceDesc% = ISAPNP_DRV, PCI\VEN_8086&DEV_2640        
+%PCI\VEN_8086&DEV_2641.DeviceDesc% = ISAPNP_DRV, PCI\VEN_8086&DEV_2641    
+%PCI\VEN_8086&DEV_2642.DeviceDesc% = ISAPNP_DRV, PCI\VEN_8086&DEV_2642       
+%PCI\VEN_8086&DEV_266A.DeviceDesc% = NO_DRV, PCI\VEN_8086&DEV_266A
+%PCI\VEN_8086&DEV_2660.DeviceDesc% = PCI_DRV, PCI\VEN_8086&DEV_2660
+%PCI\VEN_8086&DEV_2662.DeviceDesc% = PCI_DRV, PCI\VEN_8086&DEV_2662
+%PCI\VEN_8086&DEV_2664.DeviceDesc% = PCI_DRV, PCI\VEN_8086&DEV_2664
+%PCI\VEN_8086&DEV_2666.DeviceDesc% = PCI_DRV, PCI\VEN_8086&DEV_2666
+
+[INTEL_SYS.NTamd64]
+%PCI\VEN_8086&DEV_2640.DeviceDesc% = ISAPNP_DRV, PCI\VEN_8086&DEV_2640        
+%PCI\VEN_8086&DEV_2641.DeviceDesc% = ISAPNP_DRV, PCI\VEN_8086&DEV_2641    
+%PCI\VEN_8086&DEV_2642.DeviceDesc% = ISAPNP_DRV, PCI\VEN_8086&DEV_2642       
+%PCI\VEN_8086&DEV_266A.DeviceDesc% = NO_DRV, PCI\VEN_8086&DEV_266A
+%PCI\VEN_8086&DEV_2660.DeviceDesc% = PCI_DRV, PCI\VEN_8086&DEV_2660
+%PCI\VEN_8086&DEV_2662.DeviceDesc% = PCI_DRV, PCI\VEN_8086&DEV_2662
+%PCI\VEN_8086&DEV_2664.DeviceDesc% = PCI_DRV, PCI\VEN_8086&DEV_2664
+%PCI\VEN_8086&DEV_2666.DeviceDesc% = PCI_DRV, PCI\VEN_8086&DEV_2666
+
+[PCI_DRV]
+Include=machine.inf
+Needs=PCI_DRV
+
+[PCI_DRV.Services]
+Include=machine.inf
+Needs=PCI_DRV.Services
+
+[PCI_DRV.HW]
+Include=machine.inf
+Needs=PCI_DRV.HW
+
+;**************************************************************************
+; Do-nothing section used to avoid "Unknown hardware" installation prompts.
+
+[NO_DRV]
+Include=machine.inf
+Needs=NO_DRV
+
+[NO_DRV.Services]
+Include=machine.inf
+Needs=NO_DRV.Services
+
+;****************************************************
+; Generic ISA Root Bus / PCI-ISA Bridge / PCI-EISA Bridge
+
+[ISAPNP_DRV]
+Include=machine.inf
+Needs=ISAPNP_DRV
+
+[ISAPNP_DRV.Services]
+Include=machine.inf
+Needs=ISAPNP_DRV.Services
+
+[Strings]
+INTEL="Intel"
+PCI\VEN_8086&DEV_2640.DeviceDesc ="Intel(R) 82801FB LPC Interface Controller - 2640"
+PCI\VEN_8086&DEV_2641.DeviceDesc ="Intel(R) 82801FBM LPC Interface Controller - 2641"
+PCI\VEN_8086&DEV_2642.DeviceDesc ="Intel(R) 82801FB LPC Interface Controller - 2642"
+PCI\VEN_8086&DEV_266A.DeviceDesc ="Intel(R) 82801FB/FBM SMBus Controller - 266A"
+PCI\VEN_8086&DEV_2660.DeviceDesc ="Intel(R) 82801FB/FBM PCI Express Root Port - 2660"
+PCI\VEN_8086&DEV_2662.DeviceDesc ="Intel(R) 82801FB/FBM PCI Express Root Port - 2662"
+PCI\VEN_8086&DEV_2664.DeviceDesc ="Intel(R) 82801FB/FBM PCI Express Root Port - 2664"
+PCI\VEN_8086&DEV_2666.DeviceDesc ="Intel(R) 82801FB/FBM PCI Express Root Port - 2666"
+
+; Copyright (c) 2003-2005 Intel Corporation
+
+; ************************************************************
+; Intel is making no claims of usability, efficacy or 
+; warranty.  
+; ************************************************************
+; Information in this document is provided in connection with 
+; Intel products.  No license, express or implied, by estoppel 
+; or otherwise, to any intellectual property rights is granted 
+; by this document.  Intel assumes no liability whatsoever, 
+; and Intel disclaims any express or implied warranty, 
+; relating to sale and/or use of Intel products including 
+; liability or warranties relating to fitness for a particular 
+; purpose, merchantability, or infringement of any patent, 
+; copyright or other intellectual property right.  Intel 
+; products are not intended for use in medical, life saving, 
+; or life sustaining applications.
+
+; ************************************************************
+; Intel Corporation disclaims all warranties and liabilities 
+; for the use of this document and the information contained 
+; herein, and assumes no responsibility for any errors which 
+; may appear in this document, nor does Intel make a 
+; commitment to update the information contained herein. Intel 
+; reserves the right to make changes to this document at any 
+; time, without notice.
+; ************************************************************
+; ************************************************************
+
+; * Third-party brands and names are the property of their 
+; respective owners.

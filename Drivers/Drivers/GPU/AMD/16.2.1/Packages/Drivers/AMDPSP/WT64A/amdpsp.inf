@@ -1,0 +1,214 @@
+;---------------------------------------------------------
+; AMD Security Accelerator Information file : amdpsp.inf
+;
+; Installation INF for the AMD PSP Device driver.
+; Copyright (c) 2016 Advanced Micro Devices Inc.
+;---------------------------------------------------------
+
+;*****************************************
+; INF Version Section
+;*****************************************
+[Version]
+Signature = "$WINDOWS NT$"
+Provider = %ManufacturerName%
+Class = SecurityDevices
+ClassGuid = {d94ee5d8-d189-4994-83d2-f68d7d41b0e6}
+CatalogFile = amdpsp.cat
+DriverVer = 02/06/2016, 2.22.0.0002
+
+;*****************************************
+; INF DestinationDirs Section
+;*****************************************
+[DestinationDirs]
+DefaultDestDir                      = 12 ; drivers
+AMDPSP.PCI                          = 12 ; drivers
+AMDPSP.KMCSP                        = 12 ; drivers
+AMDPSP.UMCSP64                      = 11 ; system32
+AMDPSP.UMCSP32                      = 10, SysWOW64; SysWOW64
+AMDPSP.TBASE64                      = 11 ; system32
+AMDPSP.TBASE32                      = 10, SysWOW64; SysWOW64
+AMDPSP.TBASEREG64                   = 11 ; system32
+AMDPSP.TBASEREG32                   = 10, SysWOW64; SysWOW64
+AMDPSP.TBASEPROV                    = 10, SysWOW64; SysWOW64
+AMDPSP.TBASEPROVCONF                = 10, SysWOW64; SysWOW64
+AMDPSP.ROOTPACOMMON                 = 10, SysWOW64; SysWOW64
+AMDPSP.CMTL_10                      = 10, SysWOW64; SysWOW64
+AMDPSP.CMTL_20                      = 10, SysWOW64; SysWOW64
+amdpsp_Device_CoInstaller_CopyFiles = 11 ; system32
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+amdpsp.sys = 1,,
+amdkmcsp.sys = 1,,
+amdumcsp64.dll = 1,,
+amdumcsp32.dll = 1,,
+t-base_client_api64.dll = 1,,
+t-base_client_api32.dll = 1,,
+tbaseregistry64.dll = 1,,
+tbaseregistry32.dll = 1,,
+tbaseprovisioning.exe = 1,,
+tbaseprovisioning.exe.config = 1,,
+rootpacommon.dll = 1,,
+07010000000000000000000000000000.tlbin.ml = 1,,
+07010000000000000000000000000000.tlbin.cz = 1,,
+WdfCoInstaller01011.dll = 1,,
+pspcoins.dll = 1,,
+
+;*****************************************
+; INF Manufacturer Section
+;*****************************************
+[Manufacturer]
+%ManufacturerName% = AMDMfg, NTamd64
+
+;*****************************************
+; INF Models Section
+;*****************************************
+[AMDMfg.NTamd64]
+%amdpsp_10.DeviceDesc% = amdpsp_Device_10, PCI\VEN_1022&DEV_1537
+%amdpsp_20.DeviceDesc% = amdpsp_Device_20, PCI\VEN_1022&DEV_1578
+
+;*****************************************
+; INF Install Section
+;*****************************************
+[amdpsp_Device_10]
+CopyFiles = AMDPSP.PCI, AMDPSP.KMCSP, AMDPSP.UMCSP64, AMDPSP.UMCSP32, AMDPSP.TBASE64, AMDPSP.TBASE32, AMDPSP.TBASEREG64, AMDPSP.TBASEREG32, AMDPSP.TBASEPROV, AMDPSP.TBASEPROVCONF, AMDPSP.ROOTPACOMMON, AMDPSP.CMTL_10
+AddReg = amdpsp_Device_AddReg
+
+[amdpsp_Device_20]
+CopyFiles = AMDPSP.PCI, AMDPSP.KMCSP, AMDPSP.UMCSP64, AMDPSP.UMCSP32, AMDPSP.TBASE64, AMDPSP.TBASE32, AMDPSP.TBASEREG64, AMDPSP.TBASEREG32, AMDPSP.TBASEPROV, AMDPSP.TBASEPROVCONF, AMDPSP.ROOTPACOMMON, AMDPSP.CMTL_20
+AddReg = amdpsp_Device_AddReg
+
+[amdpsp_Device_AddReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-5
+HKR,,DeviceCharacteristics,0x10001,0x100     ;Use same security checks on relative opens
+HKR,,Security,,"D:P(A;;GA;;;BA)(A;;GA;;;SY)(A;;GRGWGX;;;BU)"  ;Allow generic all access to system and built-in Admin and read/write access to built-in users.
+
+[AMDPSP.PCI]
+amdpsp.sys
+
+[AMDPSP.KMCSP]
+amdkmcsp.sys
+
+[AMDPSP.UMCSP64]
+amdumcsp.dll, amdumcsp64.dll,,0x00000008 ; COPYFLG_FORCE_FILE_IN_USE
+
+[AMDPSP.UMCSP32]
+amdumcsp.dll, amdumcsp32.dll,,0x00000008 ; COPYFLG_FORCE_FILE_IN_USE
+
+[AMDPSP.TBASE64]
+t-base_client_api.dll, t-base_client_api64.dll,,0x00000008 ; COPYFLG_FORCE_FILE_IN_USE
+
+[AMDPSP.TBASE32]
+t-base_client_api.dll, t-base_client_api32.dll,,0x00000008 ; COPYFLG_FORCE_FILE_IN_USE
+
+[AMDPSP.TBASEREG64]
+tbaseregistry64.dll
+
+[AMDPSP.TBASEREG32]
+tbaseregistry32.dll
+
+[AMDPSP.TBASEPROV]
+tbaseprovisioning.exe
+
+[AMDPSP.TBASEPROVCONF]
+tbaseprovisioning.exe.config
+
+[AMDPSP.ROOTPACOMMON]
+rootpacommon.dll
+
+[AMDPSP.CMTL_10]
+07010000000000000000000000000000.tlbin, 07010000000000000000000000000000.tlbin.ml,,0x00000008 ; COPYFLG_FORCE_FILE_IN_USE
+
+[AMDPSP.CMTL_20]
+07010000000000000000000000000000.tlbin, 07010000000000000000000000000000.tlbin.cz,,0x00000008 ; COPYFLG_FORCE_FILE_IN_USE
+
+;*****************************************
+; INF Install.Services Section
+;*****************************************
+[amdpsp_Device_10.Services]
+AddService = amdpsp, %SPSVCINST_ASSOCSERVICE%, amdpsp_Service_Inst
+AddService = amdkmcsp, 0x00000000, amdkmcsp_Service_Inst
+AddService = tbaseprovisioning, 0x00000000, tbaseprovisioning_Service_Inst
+
+[amdpsp_Device_20.Services]
+AddService = amdpsp, %SPSVCINST_ASSOCSERVICE%, amdpsp_Service_Inst
+AddService = amdkmcsp, 0x00000000, amdkmcsp_Service_Inst
+AddService = tbaseprovisioning, 0x00000000, tbaseprovisioning_Service_Inst
+
+[amdpsp_Service_Inst]
+DisplayName    = %amdpsp.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 0               ; SERVICE_BOOT_START
+ErrorControl   = 0               ; SERVICE_ERROR_IGNORE
+ServiceBinary  = %12%\amdpsp.sys
+LoadOrderGroup = Cryptography
+
+[amdkmcsp_Service_Inst]
+DisplayName    = %amdkmcsp.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 0               ; SERVICE_ERROR_IGNORE
+ServiceBinary  = %12%\amdkmcsp.sys
+LoadOrderGroup = Cryptography
+
+[tbaseprovisioning_Service_Inst]
+ServiceType    = 0x10           ; SERVICE_WIN32_OWN_PROCESS
+StartType      = 2              ; SERVICE_AUTO_START
+ErrorControl   = 1              ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\SysWOW64\tbaseprovisioning.exe
+LoadOrderGroup = Event log
+
+;*****************************************
+; INF Install.HW Section
+;*****************************************
+[amdpsp_Device_10.HW]
+AddReg = amdpsp_Device_HW_AddReg
+
+[amdpsp_Device_20.HW]
+AddReg = amdpsp_Device_HW_AddReg
+
+[amdpsp_Device_HW_AddReg]
+HKR, "Interrupt Management", 0x00000010
+HKR, "Interrupt Management\MessageSignaledInterruptProperties", 0x00000010
+HKR, "Interrupt Management\MessageSignaledInterruptProperties", MSISupported, 0x00010001, 1
+
+;*****************************************
+; INF Install.CoInstallers Section
+;*****************************************
+[amdpsp_Device_10.CoInstallers]
+AddReg = amdpsp_Device_CoInstaller_AddReg
+CopyFiles = amdpsp_Device_CoInstaller_CopyFiles
+
+[amdpsp_Device_20.CoInstallers]
+AddReg = amdpsp_Device_CoInstaller_AddReg
+CopyFiles = amdpsp_Device_CoInstaller_CopyFiles
+
+[amdpsp_Device_CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000,"WdfCoInstaller01011.dll,WdfCoInstaller","pspcoins.dll,PSPCoInstaller"
+
+[amdpsp_Device_CoInstaller_CopyFiles]
+WdfCoInstaller01011.dll
+pspcoins.dll
+
+[amdpsp_Device_10.Wdf]
+KmdfService = amdpsp, amdpsp_wdfsect
+
+[amdpsp_Device_20.Wdf]
+KmdfService = amdpsp, amdpsp_wdfsect
+
+[amdpsp_wdfsect]
+KmdfLibraryVersion = 1.11
+
+[Strings]
+SPSVCINST_ASSOCSERVICE = 0x00000002
+REG_EXPAND_SZ = 0x00020000
+ManufacturerName = "Advanced Micro Devices Inc."
+ClassName = "Security Devices"
+DiskName = "AMD PSP Installation Disk"
+amdpsp_10.DeviceDesc = "AMD PSP 1.0 Device"
+amdpsp_20.DeviceDesc = "AMD PSP 2.0 Device"
+amdpsp.SVCDESC = "AMD PSP Service"
+amdkmcsp.SVCDESC = "AMD Kernel Mode CSP Service"

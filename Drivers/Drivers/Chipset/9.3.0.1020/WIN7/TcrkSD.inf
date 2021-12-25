@@ -1,0 +1,103 @@
+; ****************************************************************************
+; ****************************************************************************
+; **    Filename:  TcrkSD.INF                                              
+; **    Abstract:  Windows* 2000 and XP INF, 2k3 & 2k8 Server INF,  
+; **               Tcreek SDHost devices                     
+; **    Last Update: November 12, 2010 (Version 9.1.2 Build 1011)
+; ****************************************************************************
+; ****************************************************************************
+[Version]
+Signature="$Windows NT$"
+Class=SDHost
+ClassGUID={a0a588a4-c46f-4b37-b7ea-c82fe89870c6}
+Provider=%INTEL%
+;LayoutFile=layout.inf
+CatalogFile=TcrkSD.cat
+DriverVer=11/12/2010, 9.1.2.1011
+
+
+[SourceDisksNames] 
+[SourceDisksFiles] 
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+; =================== Table of content =========================
+
+[Manufacturer]
+%INTEL%=INTEL_SYS,NT.5.1,NTamd64
+
+; =================== Intel ====================================
+
+[Intel_SYS]
+;TopCliff
+%PCI\VEN_8086&DEV_8809.DeviceDesc% = SDHost,PCI\VEN_8086&DEV_8809
+%PCI\VEN_8086&DEV_880a.DeviceDesc% = SDHost,PCI\VEN_8086&DEV_880a
+
+[Intel_SYS.NT.5.1]
+;TopCliff
+%PCI\VEN_8086&DEV_8809.DeviceDesc% = SDHost,PCI\VEN_8086&DEV_8809
+%PCI\VEN_8086&DEV_880a.DeviceDesc% = SDHost,PCI\VEN_8086&DEV_880a
+
+
+[INTEL_SYS.NTamd64]
+;TopCliff
+%PCI\VEN_8086&DEV_8809.DeviceDesc% = SDHost,PCI\VEN_8086&DEV_8809
+%PCI\VEN_8086&DEV_880a.DeviceDesc% = SDHost,PCI\VEN_8086&DEV_880a
+
+; =================== Inf Includes ====================================
+[SDHost]
+AddReg=INF_VER
+Include=sdbus.inf
+Needs=SDHost_DRV
+
+[SDHost.Services]
+Include=sdbus.inf
+Needs=SDHost.Services
+
+[SDHost.HW]
+Include=sdbus.inf
+Needs=SDHost.HW
+
+[Strings]
+INTEL="Intel"
+;TopCliff
+PCI\VEN_8086&DEV_8809.DeviceDesc="Intel(R) Platform Controller Hub EG20T SDIO Controller #1 - 8809"
+PCI\VEN_8086&DEV_880a.DeviceDesc="Intel(R) Platform Controller Hub EG20T SDIO Controller #2 - 880a"
+
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+REG_DWORD              = 0x00010001
+
+; Copyright (c) 2006-2010 Intel Corporation
+
+; ************************************************************
+; Intel is making no claims of usability, efficacy or 
+; warranty.  
+; ************************************************************
+; Information in this document is provided in connection with 
+; Intel products.  No license, express or implied, by estoppel 
+; or otherwise, to any intellectual property rights is granted 
+; by this document.  Intel assumes no liability whatsoever, 
+; and Intel disclaims any express or implied warranty, 
+; relating to sale and/or use of Intel products including 
+; liability or warranties relating to fitness for a particular 
+; purpose, merchantability, or infringement of any patent, 
+; copyright or other intellectual property right.  Intel 
+; products are not intended for use in medical, life saving, 
+; or life sustaining applications.
+
+; ************************************************************
+; Intel Corporation disclaims all warranties and liabilities 
+; for the use of this document and the information contained 
+; herein, and assumes no responsibility for any errors which 
+; may appear in this document, nor does Intel make a 
+; commitment to update the information contained herein. Intel 
+; reserves the right to make changes to this document at any 
+; time, without notice.
+; ************************************************************
+; ************************************************************
+
+; * Third-party brands and names are the property of their 
+; respective owners.

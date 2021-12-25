@@ -1,0 +1,187 @@
+; ****************************************************************************
+; ****************************************************************************
+; **    Filename:  ICH5USB.INF                                              
+; **    Abstract:  Windows* 2000 and XP INF Update File for   
+; **               Intel(R) 82801 USB devices                     
+; **    Last Update: September 13, 2006 (Version 8.2.0 Build 1008)
+; ****************************************************************************
+; ****************************************************************************
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=USB
+ClassGUID={36FC9E60-C465-11CF-8056-444553540000}
+Provider=%INTEL%
+CatalogFile=ich5usb.cat
+DriverVer=09/13/2006, 8.2.0.1008
+
+[SourceDisksNames] 
+[SourceDisksFiles] 
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+; =================== Table of content =========================
+
+[Manufacturer]
+%INTEL%=Intel,NT.5.1,NT.5.2,NT.6.0,NTamd64
+
+; =================== Intel ====================================
+
+[Intel]
+%PCI\VEN_8086&DEV_24D2.DeviceDesc%=INTEL_USB_2K,PCI\VEN_8086&DEV_24D2
+%PCI\VEN_8086&DEV_24D4.DeviceDesc%=INTEL_USB_2K,PCI\VEN_8086&DEV_24D4
+%PCI\VEN_8086&DEV_24D7.DeviceDesc%=INTEL_USB_2K,PCI\VEN_8086&DEV_24D7
+%PCI\VEN_8086&DEV_24DE.DeviceDesc%=INTEL_USB_2K,PCI\VEN_8086&DEV_24DE
+%PCI\VEN_8086&DEV_24DD.DeviceDesc%=INTEL_USB2_2K,PCI\VEN_8086&DEV_24DD
+%PCI\VEN_8086&DEV_25A9.DeviceDesc%=INTEL_USB_2K,PCI\VEN_8086&DEV_25A9
+%PCI\VEN_8086&DEV_25AA.DeviceDesc%=INTEL_USB_2K,PCI\VEN_8086&DEV_25AA
+%PCI\VEN_8086&DEV_25AD.DeviceDesc%=INTEL_USB2_2K,PCI\VEN_8086&DEV_25AD
+
+[Intel.NT.5.1]
+%PCI\VEN_8086&DEV_24D2.DeviceDesc%=INTEL_USB,PCI\VEN_8086&DEV_24D2
+%PCI\VEN_8086&DEV_24D4.DeviceDesc%=INTEL_USB,PCI\VEN_8086&DEV_24D4
+%PCI\VEN_8086&DEV_24D7.DeviceDesc%=INTEL_USB,PCI\VEN_8086&DEV_24D7
+%PCI\VEN_8086&DEV_24DE.DeviceDesc%=INTEL_USB,PCI\VEN_8086&DEV_24DE
+%PCI\VEN_8086&DEV_24DD.DeviceDesc%=INTEL_USB2,PCI\VEN_8086&DEV_24DD
+%PCI\VEN_8086&DEV_25A9.DeviceDesc%=INTEL_USB,PCI\VEN_8086&DEV_25A9
+%PCI\VEN_8086&DEV_25AA.DeviceDesc%=INTEL_USB,PCI\VEN_8086&DEV_25AA
+%PCI\VEN_8086&DEV_25AD.DeviceDesc%=INTEL_USB2,PCI\VEN_8086&DEV_25AD
+
+[Intel.NT.5.2]
+%PCI\VEN_8086&DEV_24D2.DeviceDesc%=INTEL_USB,PCI\VEN_8086&DEV_24D2
+%PCI\VEN_8086&DEV_24D4.DeviceDesc%=INTEL_USB,PCI\VEN_8086&DEV_24D4
+%PCI\VEN_8086&DEV_24D7.DeviceDesc%=INTEL_USB,PCI\VEN_8086&DEV_24D7
+%PCI\VEN_8086&DEV_24DE.DeviceDesc%=INTEL_USB,PCI\VEN_8086&DEV_24DE
+%PCI\VEN_8086&DEV_24DD.DeviceDesc%=INTEL_USB2_2K3,PCI\VEN_8086&DEV_24DD
+%PCI\VEN_8086&DEV_25A9.DeviceDesc%=INTEL_USB,PCI\VEN_8086&DEV_25A9
+%PCI\VEN_8086&DEV_25AA.DeviceDesc%=INTEL_USB,PCI\VEN_8086&DEV_25AA
+%PCI\VEN_8086&DEV_25AD.DeviceDesc%=INTEL_USB2_2K3,PCI\VEN_8086&DEV_25AD
+
+[Intel.NTamd64]
+%PCI\VEN_8086&DEV_24D2.DeviceDesc%=INTEL_USB,PCI\VEN_8086&DEV_24D2
+%PCI\VEN_8086&DEV_24D4.DeviceDesc%=INTEL_USB,PCI\VEN_8086&DEV_24D4
+%PCI\VEN_8086&DEV_24D7.DeviceDesc%=INTEL_USB,PCI\VEN_8086&DEV_24D7
+%PCI\VEN_8086&DEV_24DE.DeviceDesc%=INTEL_USB,PCI\VEN_8086&DEV_24DE
+%PCI\VEN_8086&DEV_24DD.DeviceDesc%=INTEL_USB2,PCI\VEN_8086&DEV_24DD
+%PCI\VEN_8086&DEV_25A9.DeviceDesc%=INTEL_USB,PCI\VEN_8086&DEV_25A9
+%PCI\VEN_8086&DEV_25AA.DeviceDesc%=INTEL_USB,PCI\VEN_8086&DEV_25AA
+%PCI\VEN_8086&DEV_25AD.DeviceDesc%=INTEL_USB2,PCI\VEN_8086&DEV_25AD
+
+[Intel.NT.6.0]
+%PCI\VEN_8086&DEV_24D2.DeviceDesc%=INTEL_USB,PCI\VEN_8086&DEV_24D2
+%PCI\VEN_8086&DEV_24D4.DeviceDesc%=INTEL_USB,PCI\VEN_8086&DEV_24D4
+%PCI\VEN_8086&DEV_24D7.DeviceDesc%=INTEL_USB,PCI\VEN_8086&DEV_24D7
+%PCI\VEN_8086&DEV_24DE.DeviceDesc%=INTEL_USB,PCI\VEN_8086&DEV_24DE
+%PCI\VEN_8086&DEV_24DD.DeviceDesc%=INTEL_USB2,PCI\VEN_8086&DEV_24DD
+%PCI\VEN_8086&DEV_25A9.DeviceDesc%=INTEL_USB,PCI\VEN_8086&DEV_25A9
+%PCI\VEN_8086&DEV_25AA.DeviceDesc%=INTEL_USB,PCI\VEN_8086&DEV_25AA
+%PCI\VEN_8086&DEV_25AD.DeviceDesc%=INTEL_USB2,PCI\VEN_8086&DEV_25AD
+
+; For Windowns 2000 Only
+[INTEL_USB_2K.NT]
+Include=usb.inf
+Needs=UniversalHCD.Dev.NT
+
+[INTEL_USB_2K.NT.Services]
+Include=usb.inf
+Needs=UniversalHCD.Dev.NT.Services
+
+; For USB2 Support
+[INTEL_USB2_2K.NT]
+AddReg=USB2_SUPPORT
+Include=usb.inf
+Needs=EHCI.NT
+
+[INTEL_USB2_2K.NT.Services]
+Include=usb.inf
+Needs=EHCI.NT.Services
+
+; For Windowns XP and greater
+[INTEL_USB.NT]
+Include=usbport.inf
+Needs=UHCI.Dev.NT
+
+[INTEL_USB.NT.Services]
+Include=usbport.inf
+Needs=UHCI.Dev.NT.Services
+
+; For USB2 Support
+[INTEL_USB2.NT]
+AddReg=USB2_SUPPORT
+Include=usbport.inf
+Needs=EHCI.Dev.NT
+
+[INTEL_USB2.NT.Services]
+Include=usbport.inf
+Needs=EHCI.Dev.NT.Services
+
+[INTEL_USB2.NT.CoInstallers]
+Include=usbport.inf
+Needs=EHCI.Dev.NT.CoInstallers
+
+; For USB2 Support
+[INTEL_USB2_2K3.NT]
+AddReg=USB2_SUPPORT
+Include=usbport.inf
+; Needs=EHCI.Dev.NT
+AddReg=EHCI.AddReg.NT
+CopyFiles=EHCI.CopyFiles.NT,USBUI.CopyFiles.NT,USB.CopyFiles.NT,HCCOIN.CopyFiles.NT
+DelFiles=USB.DelFiles.NT ; HCCOIN.Delfiles.NT // Do not delete hccoin.dll
+
+[INTEL_USB2_2K3.NT.Services]
+Include=usbport.inf
+Needs=EHCI.Dev.NT.Services
+
+[INTEL_USB2_2K3.NT.CoInstallers]
+Include=usbport.inf
+Needs=EHCI.Dev.NT.CoInstallers
+
+[USB2_SUPPORT]
+HKLM, SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&dev_24DD,ClassGUID,,"{36FC9E60-C465-11CF-8056-444553540000}"
+HKLM, SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&dev_24DD,Service,,"usbhub20"
+HKLM, SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&dev_25AD,ClassGUID,,"{36FC9E60-C465-11CF-8056-444553540000}"
+HKLM, SYSTEM\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_8086&dev_25AD,Service,,"usbhub20"
+
+[Strings]
+INTEL="Intel"
+PCI\VEN_8086&DEV_24D2.DeviceDesc="Intel(R) 82801EB USB Universal Host Controller - 24D2"
+PCI\VEN_8086&DEV_24D4.DeviceDesc="Intel(R) 82801EB USB Universal Host Controller - 24D4"
+PCI\VEN_8086&DEV_24D7.DeviceDesc="Intel(R) 82801EB USB Universal Host Controller - 24D7"
+PCI\VEN_8086&DEV_24DE.DeviceDesc="Intel(R) 82801EB USB Universal Host Controller - 24DE"
+PCI\VEN_8086&DEV_24DD.DeviceDesc="Intel(R) 82801EB USB2 Enhanced Host Controller - 24DD"
+PCI\VEN_8086&DEV_25A9.DeviceDesc="Intel(R) 6300ESB USB Universal Host Controller - 25A9"
+PCI\VEN_8086&DEV_25AA.DeviceDesc="Intel(R) 6300ESB USB Universal Host Controller - 25AA"
+PCI\VEN_8086&DEV_25AD.DeviceDesc="Intel(R) 6300ESB USB2 Enhanced Host Controller - 25AD"
+
+; Copyright (c) 2003-2006 Intel Corporation
+
+; ************************************************************
+; Intel is making no claims of usability, efficacy or 
+; warranty.  
+; ************************************************************
+; Information in this document is provided in connection with 
+; Intel products.  No license, express or implied, by estoppel 
+; or otherwise, to any intellectual property rights is granted 
+; by this document.  Intel assumes no liability whatsoever, 
+; and Intel disclaims any express or implied warranty, 
+; relating to sale and/or use of Intel products including 
+; liability or warranties relating to fitness for a particular 
+; purpose, merchantability, or infringement of any patent, 
+; copyright or other intellectual property right.  Intel 
+; products are not intended for use in medical, life saving, 
+; or life sustaining applications.
+
+; ************************************************************
+; Intel Corporation disclaims all warranties and liabilities 
+; for the use of this document and the information contained 
+; herein, and assumes no responsibility for any errors which 
+; may appear in this document, nor does Intel make a 
+; commitment to update the information contained herein. Intel 
+; reserves the right to make changes to this document at any 
+; time, without notice.
+; ************************************************************
+; ************************************************************
+
+; * Third-party brands and names are the property of their 
+; respective owners.

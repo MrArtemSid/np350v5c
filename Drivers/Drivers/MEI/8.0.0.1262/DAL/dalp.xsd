@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:dalp">
+  <xsd:element name="package">
+    <xsd:complexType>
+      <xsd:sequence>
+
+        <xsd:element name="packageInfo">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="name" type="xsd:string"/>
+              <xsd:element name="description" type="xsd:string"/>
+              <xsd:element name="vendor" type="xsd:string"/>
+              <xsd:element name="appletId" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+
+        <xsd:element name="applets">
+          <xsd:complexType>
+            <xsd:sequence>
+
+              <xsd:element name="applet" minOccurs="1" maxOccurs="10">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="platform" type="xsd:string"/>
+                    <xsd:element name="appletVersion" type="xsd:string"/>
+                    <xsd:element name="fwVersion" type="xsd:string"/>
+                    <xsd:element name="appletBlob" type="xsd:base64Binary"/>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+
+      </xsd:sequence>
+      
+      <xsd:attribute name="dalpVersion" type="xsd:string" use="required"/>
+    </xsd:complexType>
+  </xsd:element>
+
+</xsd:schema>

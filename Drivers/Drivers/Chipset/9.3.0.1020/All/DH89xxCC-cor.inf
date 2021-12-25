@@ -1,0 +1,234 @@
+; ****************************************************************************
+; ****************************************************************************
+; **    Filename:  DH89xxCC-cor.inf
+; **    Abstract:  Windows* INF File for DH89xxCC Core Devices
+; **    Last Update: March 10, 2011 (Version 9.2.2 Build 1020)
+; ****************************************************************************
+; ****************************************************************************
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%INTEL%
+CatalogFile=DH89xxCC-cor.cat
+DriverVer=03/10/2011, 9.2.2.1020
+
+[SourceDisksNames] 
+[SourceDisksFiles]
+
+[PackageInfo]
+Name=Chipset
+Condition=Provider(Microsoft)||InstallDriverName(Chipset)||Provider()
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[Manufacturer]
+%INTEL%=INTEL_SYS,NT.5.1,NTamd64
+
+[INTEL_SYS]
+;DH89xxCC
+%PCI\VEN_8086&DEV_2331.DeviceDesc% = NO_DRV,PCI\VEN_8086&DEV_2331
+%PCI\VEN_8086&DEV_2332.DeviceDesc% = NO_DRV,PCI\VEN_8086&DEV_2332
+%PCI\VEN_8086&DEV_2352.DeviceDesc% = NO_DRV,PCI\VEN_8086&DEV_2352
+%PCI\VEN_8086&DEV_2360.DeviceDesc% = NO_DRV,PCI\VEN_8086&DEV_2360
+
+;HECI Devices
+%PCI\VEN_8086&DEV_2364.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_2364
+%PCI\VEN_8086&DEV_2365.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_2365
+;ACPCIe EP PCI Devices
+%PCI\VEN_8086&DEV_0434.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_0434
+%PCI\VEN_8086&DEV_043E.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_043E
+
+%PCI\VEN_8086&DEV_2342.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2342
+%PCI\VEN_8086&DEV_2343.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2343
+%PCI\VEN_8086&DEV_2344.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2344
+%PCI\VEN_8086&DEV_2345.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2345
+%PCI\VEN_8086&DEV_2346.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2346
+%PCI\VEN_8086&DEV_2347.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2347
+%PCI\VEN_8086&DEV_2348.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2348
+%PCI\VEN_8086&DEV_2349.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2349
+%PCI\VEN_8086&DEV_2350.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2350
+%PCI\VEN_8086&DEV_2351.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2351
+;%PCI\VEN_8086&DEV_2353.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2353
+;%PCI\VEN_8086&DEV_2354.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2354
+%PCI\VEN_8086&DEV_234A.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_234A
+%PCI\VEN_8086&DEV_234B.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_234B
+%PCI\VEN_8086&DEV_234C.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_234C
+%PCI\VEN_8086&DEV_234D.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_234D
+%PCI\VEN_8086&DEV_234E.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_234E
+%PCI\VEN_8086&DEV_234F.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_234F
+
+%PCI\VEN_8086&DEV_2310.DeviceDesc% = ISAPNP_DRV,PCI\VEN_8086&DEV_2310
+
+[Intel_SYS.NT.5.1]
+;DH89xxCC
+%PCI\VEN_8086&DEV_2331.DeviceDesc% = NO_DRV,PCI\VEN_8086&DEV_2331
+%PCI\VEN_8086&DEV_2332.DeviceDesc% = NO_DRV,PCI\VEN_8086&DEV_2332
+%PCI\VEN_8086&DEV_2352.DeviceDesc% = NO_DRV,PCI\VEN_8086&DEV_2352
+%PCI\VEN_8086&DEV_2360.DeviceDesc% = NO_DRV,PCI\VEN_8086&DEV_2360
+
+;HECI Devices
+%PCI\VEN_8086&DEV_2364.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_2364
+%PCI\VEN_8086&DEV_2365.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_2365
+;ACPCIe EP PCI Devices
+%PCI\VEN_8086&DEV_0434.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_0434
+%PCI\VEN_8086&DEV_043E.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_043E
+
+%PCI\VEN_8086&DEV_2342.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2342
+%PCI\VEN_8086&DEV_2343.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2343
+%PCI\VEN_8086&DEV_2344.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2344
+%PCI\VEN_8086&DEV_2345.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2345
+%PCI\VEN_8086&DEV_2346.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2346
+%PCI\VEN_8086&DEV_2347.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2347
+%PCI\VEN_8086&DEV_2348.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2348
+%PCI\VEN_8086&DEV_2349.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2349
+%PCI\VEN_8086&DEV_2350.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2350
+%PCI\VEN_8086&DEV_2351.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2351
+;%PCI\VEN_8086&DEV_2353.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2353
+;%PCI\VEN_8086&DEV_2354.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2354
+%PCI\VEN_8086&DEV_234A.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_234A
+%PCI\VEN_8086&DEV_234B.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_234B
+%PCI\VEN_8086&DEV_234C.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_234C
+%PCI\VEN_8086&DEV_234D.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_234D
+%PCI\VEN_8086&DEV_234E.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_234E
+%PCI\VEN_8086&DEV_234F.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_234F
+
+%PCI\VEN_8086&DEV_2310.DeviceDesc% = ISAPNP_DRV,PCI\VEN_8086&DEV_2310
+
+[INTEL_SYS.NTamd64]
+;DH89xxCC
+%PCI\VEN_8086&DEV_2331.DeviceDesc% = NO_DRV,PCI\VEN_8086&DEV_2331
+%PCI\VEN_8086&DEV_2332.DeviceDesc% = NO_DRV,PCI\VEN_8086&DEV_2332
+%PCI\VEN_8086&DEV_2352.DeviceDesc% = NO_DRV,PCI\VEN_8086&DEV_2352
+%PCI\VEN_8086&DEV_2360.DeviceDesc% = NO_DRV,PCI\VEN_8086&DEV_2360
+
+;HECI Devices
+%PCI\VEN_8086&DEV_2364.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_2364
+%PCI\VEN_8086&DEV_2365.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_2365
+;ACPCIe EP PCI Devices
+%PCI\VEN_8086&DEV_0434.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_0434
+%PCI\VEN_8086&DEV_043E.DeviceDesc%=NO_DRV,PCI\VEN_8086&DEV_043E
+
+%PCI\VEN_8086&DEV_2342.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2342
+%PCI\VEN_8086&DEV_2343.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2343
+%PCI\VEN_8086&DEV_2344.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2344
+%PCI\VEN_8086&DEV_2345.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2345
+%PCI\VEN_8086&DEV_2346.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2346
+%PCI\VEN_8086&DEV_2347.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2347
+%PCI\VEN_8086&DEV_2348.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2348
+%PCI\VEN_8086&DEV_2349.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2349
+%PCI\VEN_8086&DEV_2350.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2350
+%PCI\VEN_8086&DEV_2351.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2351
+;%PCI\VEN_8086&DEV_2353.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2353
+;%PCI\VEN_8086&DEV_2354.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_2354
+%PCI\VEN_8086&DEV_234A.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_234A
+%PCI\VEN_8086&DEV_234B.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_234B
+%PCI\VEN_8086&DEV_234C.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_234C
+%PCI\VEN_8086&DEV_234D.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_234D
+%PCI\VEN_8086&DEV_234E.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_234E
+%PCI\VEN_8086&DEV_234F.DeviceDesc% = PCI_DRV,PCI\VEN_8086&DEV_234F
+
+%PCI\VEN_8086&DEV_2310.DeviceDesc% = ISAPNP_DRV,PCI\VEN_8086&DEV_2310
+
+[PCI_DRV]
+Include=machine.inf
+Needs=PCI_DRV
+
+[PCI_DRV.Services]
+Include=machine.inf
+Needs=PCI_DRV.Services
+
+[PCI_DRV.HW]
+Include=machine.inf
+Needs=PCI_DRV.HW
+
+;**************************************************************************
+; Do-nothing section used to avoid "Unknown hardware" installation prompts.
+
+[NO_DRV]
+Include=machine.inf
+Needs=NO_DRV
+
+[NO_DRV.Services]
+Include=machine.inf
+Needs=NO_DRV.Services
+
+;****************************************************
+; Generic ISA Root Bus / PCI-ISA Bridge / PCI-EISA Bridge
+
+[ISAPNP_DRV]
+Include=machine.inf
+Needs=ISAPNP_DRV
+
+[ISAPNP_DRV.Services]
+Include=machine.inf
+Needs=ISAPNP_DRV.Services
+
+[Strings]
+INTEL="Intel"
+PCI\VEN_8086&DEV_2331.DeviceDesc = "DH89xxCC Chap Counter - 2331"
+PCI\VEN_8086&DEV_2332.DeviceDesc = "DH89xxCC Thermal Subsystem - 2332"
+PCI\VEN_8086&DEV_2352.DeviceDesc = "DH89xxCC NAND Controller - 2352"
+PCI\VEN_8086&DEV_2360.DeviceDesc = "DH89xxCC Watchdog Timer - 2360"
+
+;HECI Devices
+PCI\VEN_8086&DEV_2364.DeviceDesc="DH89xxCC HECI - 2364"
+PCI\VEN_8086&DEV_2365.DeviceDesc="DH89xxCC HECI - 2365"
+;ACPCIe EP PCI Devices
+PCI\VEN_8086&DEV_0434.DeviceDesc="DH89xxCC MEs - 0434"
+PCI\VEN_8086&DEV_043E.DeviceDesc="DH89xxCC LEB - 043E"
+
+PCI\VEN_8086&DEV_2342.DeviceDesc = "DH89xxCC PCI-Express Root Port #1 - 2342"
+PCI\VEN_8086&DEV_2343.DeviceDesc = "DH89xxCC PCI-Express Root Port #1 - 2343"
+PCI\VEN_8086&DEV_2344.DeviceDesc = "DH89xxCC PCI-Express Root Port #2 - 2344"
+PCI\VEN_8086&DEV_2345.DeviceDesc = "DH89xxCC PCI-Express Root Port #2 - 2345"
+PCI\VEN_8086&DEV_2346.DeviceDesc = "DH89xxCC PCI-Express Root Port #3 - 2346"
+PCI\VEN_8086&DEV_2347.DeviceDesc = "DH89xxCC PCI-Express Root Port #3 - 2347"
+PCI\VEN_8086&DEV_2348.DeviceDesc = "DH89xxCC PCI-Express Root Port #4 - 2348"
+PCI\VEN_8086&DEV_2349.DeviceDesc = "DH89xxCC PCI-Express Root Port #4 - 2349"
+PCI\VEN_8086&DEV_2350.DeviceDesc = "DH89xxCC PCI-Express Root Port #8 - 2350"
+PCI\VEN_8086&DEV_2351.DeviceDesc = "DH89xxCC PCI-Express Root Port #8 - 2351"
+;PCI\VEN_8086&DEV_2353.DeviceDesc = "DH89xxCC VE #0 - 2353"
+;PCI\VEN_8086&DEV_2354.DeviceDesc = "DH89xxCC VE #1 - 2354"
+PCI\VEN_8086&DEV_234A.DeviceDesc = "DH89xxCC PCI-Express Root Port #5 - 234A"
+PCI\VEN_8086&DEV_234B.DeviceDesc = "DH89xxCC PCI-Express Root Port #5 - 234B"
+PCI\VEN_8086&DEV_234C.DeviceDesc = "DH89xxCC PCI-Express Root Port #6 - 234C"
+PCI\VEN_8086&DEV_234D.DeviceDesc = "DH89xxCC PCI-Express Root Port #6 - 234D"
+PCI\VEN_8086&DEV_234E.DeviceDesc = "DH89xxCC PCI-Express Root Port #7 - 234E"
+PCI\VEN_8086&DEV_234F.DeviceDesc = "DH89xxCC PCI-Express Root Port #7 - 234F"
+
+PCI\VEN_8086&DEV_2310.DeviceDesc = "DH89xxCC LPC Interface Desktop - 2310"
+
+; Copyright (c) 2003-2009 Intel Corporation
+
+; ************************************************************
+; Intel is making no claims of usability, efficacy or 
+; warranty.  
+; ************************************************************
+; Information in this document is provided in connection with 
+; Intel products.  No license, express or implied, by estoppel 
+; or otherwise, to any intellectual property rights is granted 
+; by this document.  Intel assumes no liability whatsoever, 
+; and Intel disclaims any express or implied warranty, 
+; relating to sale and/or use of Intel products including 
+; liability or warranties relating to fitness for a particular 
+; purpose, merchantability, or infringement of any patent, 
+; copyright or other intellectual property right.  Intel 
+; products are not intended for use in medical, life saving, 
+; or life sustaining applications.
+
+; ************************************************************
+; Intel Corporation disclaims all warranties and liabilities 
+; for the use of this document and the information contained 
+; herein, and assumes no responsibility for any errors which 
+; may appear in this document, nor does Intel make a 
+; commitment to update the information contained herein. Intel 
+; reserves the right to make changes to this document at any 
+; time, without notice.
+; ************************************************************
+; ************************************************************
+
+; * Third-party brands and names are the property of their 
+; respective owners.

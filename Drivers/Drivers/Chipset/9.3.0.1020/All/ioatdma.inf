@@ -1,0 +1,67 @@
+;*******************************************************************************
+;*                                                                            **
+;*                     I N T E L   P R O P R I E T A R Y                      **
+;*                                                                            **
+;*   COPYRIGHT (c) 2003-2006 BY INTEL CORPORATION. ALL RIGHTS RESERVED.  NO   **
+;*   PART  OF  THIS  PROGRAM OR PUBLICATION MAY BE REPRODUCED, TRANSMITTED,   **
+;*   TRANSCRIBED, STORED IN A RETRIEVAL  SYSTEM,  OR  TRANSLATED  INTO  ANY   **
+;*   LANGUAGE OR COMPUTER LANGUAGE IN ANY FORM OR BY ANY MEANS, ELECTRONIC,   **
+;*   MECHANICAL, MAGNETIC, OPTICAL, CHEMICAL, MANUAL, OR OTHERWISE, WITHOUT   **
+;*   THE PRIOR WRITTEN PERMISSION OF :                                        **
+;*                                                                            **
+;*                             INTEL CORPORATION                              **
+;*                                                                            **
+;*                          2200 MISSION COLLEGE BLVD                         **
+;*                                                                            **
+;*                     SANTA CLARA, CALIFORNIA 95052-8119                     **
+;*                                                                            **
+;*******************************************************************************
+;
+; INF for the Intel(R) 5000 Series Chipsets Integrated Device - 1A38
+;
+
+[Version]
+Signature="$Windows NT$"
+Class=System
+ClassGUID={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%INTC%
+CatalogFile=ioatdma.cat
+DriverVer=08/14/2008,1.2.67.0
+
+[Manufacturer]
+%MfgName% = Intel, NTx86, NTamd64
+
+[Intel]
+%PCI\VEN_8086&DEV_1A38.DeviceDesc%=NO_DRV, PCI\VEN_8086&DEV_1A38
+%PCI\VEN_8086&DEV_360B.DeviceDesc%=NO_DRV, PCI\VEN_8086&DEV_360B
+
+[Intel.NTx86]
+%PCI\VEN_8086&DEV_1A38.DeviceDesc%=NO_DRV, PCI\VEN_8086&DEV_1A38
+%PCI\VEN_8086&DEV_360B.DeviceDesc%=NO_DRV, PCI\VEN_8086&DEV_360B
+
+[Intel.NTamd64]
+%PCI\VEN_8086&DEV_1A38.DeviceDesc%=NO_DRV, PCI\VEN_8086&DEV_1A38
+%PCI\VEN_8086&DEV_360B.DeviceDesc%=NO_DRV, PCI\VEN_8086&DEV_360B
+
+;---------------------------------------------------------------;
+
+[NO_DRV]
+AddReg=NoDrv.reg
+Include=machine.inf
+Needs=NO_DRV
+
+[NO_DRV.Services]
+Include=machine.inf
+Needs=NO_DRV.Services
+
+[NoDrv.reg]
+HKR,,Version,,"%DriverVer%"
+
+;---------------------------------------------------------------;
+
+[Strings]
+INTC="Intel"
+MfgName="Intel"
+PCI\VEN_8086&DEV_1A38.DeviceDesc="Intel(R) 5000 Series Chipsets Integrated Device - 1A38"
+PCI\VEN_8086&DEV_360B.DeviceDesc="Intel(R) 7300 Chipset QuickData Technology Device - 360B"
+
