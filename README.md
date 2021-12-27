@@ -10,18 +10,22 @@ Linux:
 3. Enable 3 GB ZRAM:
 $ su
 $ nano /etc/modules-load.d/zram.conf
+
 zram
 
 $ nano /etc/modprobe.d/zram.conf
+
 options zram num_devices=4
 
 $ nano /etc/udev/rules.d/99-zram.rules
+
 KERNEL=="zram0", ATTR{disksize}="768Mb" RUN="/usr/bin/mkswap /dev/zram0", TAG+="systemd"
 KERNEL=="zram1", ATTR{disksize}="768Mb" RUN="/usr/bin/mkswap /dev/zram1", TAG+="systemd"
 KERNEL=="zram2", ATTR{disksize}="768Mb" RUN="/usr/bin/mkswap /dev/zram2", TAG+="systemd"
 KERNEL=="zram3", ATTR{disksize}="768Mb" RUN="/usr/bin/mkswap /dev/zram3", TAG+="systemd"
 
 $ nano /etc/fstab
+
 /dev/zram0 none swap defaults 0 0
 /dev/zram1 none swap defaults 0 0
 /dev/zram2 none swap defaults 0 0
