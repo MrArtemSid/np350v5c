@@ -7,7 +7,7 @@ Linux:
 
 2. radeon.si_support=0 amdgpu.si_support=1 to GRUB_CMDLINE_LINUX_DEFAULT in /etc/default/grub
 
-3. Enable 3 GB ZRAM:
+3. Enable 3 GB ZRAM
 $ su
 $ nano /etc/modules-load.d/zram.conf
 
