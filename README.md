@@ -4,6 +4,7 @@ If u face BSOD or error 31 on HD 7730m + HD 4000 then flash Leshcat gpu drivers,
 
 Linux:
 1. https://gist.github.com/DDoSolitary/ce7a005f9a139e0547484508a78259f7 (Enables hw acceleration and switches to external gpu)
+$ sudo cp hwaccel-auto-config.sh /etc/profile.d/ 
 
 2. radeon.si_support=0 amdgpu.si_support=1 to GRUB_CMDLINE_LINUX_DEFAULT in /etc/default/grub
 
